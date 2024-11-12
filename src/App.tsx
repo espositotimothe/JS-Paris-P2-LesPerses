@@ -1,13 +1,12 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import Themedif from "./components/Themedif";
 
 function App() {
-	const name = "toto";
-	const text = "Welcome";
 	return (
-		<>
-			{text} {name}
-		</>
+		<div>
+			<Themedif />
+		</div>
 	);
 }
-
 export default App;

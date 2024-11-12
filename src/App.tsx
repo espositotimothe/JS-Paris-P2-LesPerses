@@ -1,11 +1,13 @@
 import "./App.css";
+import Header from "./components/quiz-components/Header";
+import Question from "./components/quiz-components/Question";
 
 function App() {
-	const name = "toto";
-	const text = "Welcome";
+
 	return (
 		<>
-			{text} {name}
+			<Header/>
+			<Question/>
 		</>
 	);
 }

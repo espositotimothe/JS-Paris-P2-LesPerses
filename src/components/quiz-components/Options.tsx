@@ -36,17 +36,17 @@ export default function Options() {
 			)}
 			{quiz && (
 				<button type="button" className="option">
-					{quiz.badAnswers}
+					{quiz.badAnswers[0]}
 				</button>
 			)}
 			{quiz && (
 				<button type="button" className="option">
-					{quiz.badAnswers}
+					{quiz.badAnswers[1]}
 				</button>
 			)}
 			{quiz && (
 				<button type="button" className="option">
-					{quiz.badAnswers}
+					{quiz.badAnswers[2]}
 				</button>
 			)}
 		</div>

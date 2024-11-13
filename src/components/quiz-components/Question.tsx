@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Options from "./Options";
+// import NextButton from "./NextButton";
 
 type Quiz = {
 	_id: string;
@@ -28,6 +29,14 @@ export default function Question() {
 			);
 	}, []);
 
+	const quizzesItems = quizzes.map((quiz) => ({ quiz }));
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const handleClick = () => {
+		setCurrentIndex((prevIndex) =>
+			prevIndex < quizzesItems.length - 1 ? prevIndex + 1 : 0,
+		);
+	};
+
 	return (
 		<>
 			<div className="question-container">
@@ -36,6 +45,9 @@ export default function Question() {
 			</div>
 			<div className="options">
 				<Options />
+				<button type="button" className="next" onClick={handleClick}>
+					Suivant
+				</button>
 			</div>
 		</>
 	);

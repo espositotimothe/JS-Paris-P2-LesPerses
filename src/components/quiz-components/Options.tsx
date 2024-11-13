@@ -19,6 +19,8 @@ const shuffleArray = (array: string[]) => {
 
 export default function Options() {
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
+	const [allAnswers, setAllAnswers] = useState<string[]>([]);
+	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
 	useEffect(() => {
 		fetch("https://quizzapi.jomoreschi.fr/api/v1/quiz")
@@ -26,6 +28,11 @@ export default function Options() {
 			.then((data) => {
 				if (Array.isArray(data.quizzes) && data.quizzes.length > 0) {
 					setQuiz(data.quizzes[0]);
+					const answers = shuffleArray([
+						data.quizzes[0].answer,
+						...data.quizzes[0].badAnswers,
+					]);
+					setAllAnswers(answers);
 				} else {
 					console.error("Aucun quiz trouvé");
 				}
@@ -35,14 +42,19 @@ export default function Options() {
 			);
 	}, []);
 
-	const allAnswers = quiz
-		? shuffleArray([quiz.answer, ...quiz.badAnswers])
-		: [];
+	const handleAnswerClick = (answer: string) => {
+		setSelectedAnswer(answer);
+	};
 
 	return (
 		<div className="options">
 			{allAnswers.map((answer) => (
-				<button key={answer} type="button" className="option">
+				<button
+					key={`${answer}-${quiz?._id}`} // Generate unique key using answer text and quiz ID
+					type="button"
+					className={`option ${selectedAnswer === answer ? "selected" : ""}`}
+					onClick={() => handleAnswerClick(answer)}
+				>
 					{answer}
 				</button>
 			))}

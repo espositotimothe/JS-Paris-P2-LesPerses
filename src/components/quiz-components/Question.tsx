@@ -19,7 +19,7 @@ export default function Question() {
 			.then((response) => response.json())
 			.then((data) => {
 				if (Array.isArray(data.quizzes) && data.quizzes.length > 0) {
-					setQuiz(data.quizzes[0]); // On prend le premier quiz
+					setQuiz(data.quizzes[0]);
 				} else {
 					console.error("Aucun quiz trouvé");
 				}

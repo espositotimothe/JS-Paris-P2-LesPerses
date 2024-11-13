@@ -9,6 +9,14 @@ type Quiz = {
 	difficulty: "facile" | "normal" | "difficile";
 };
 
+const shuffleArray = (array: string[]) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+};
+
 export default function Options() {
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 
@@ -27,28 +35,17 @@ export default function Options() {
 			);
 	}, []);
 
+	const allAnswers = quiz
+		? shuffleArray([quiz.answer, ...quiz.badAnswers])
+		: [];
+
 	return (
 		<div className="options">
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.answer}
+			{allAnswers.map((answer) => (
+				<button key={answer} type="button" className="option">
+					{answer}
 				</button>
-			)}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers}
-				</button>
-			)}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers}
-				</button>
-			)}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers}
-				</button>
-			)}
+			))}
 		</div>
 	);
 }

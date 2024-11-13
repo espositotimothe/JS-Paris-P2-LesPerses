@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Question {
 	question: string;
@@ -16,63 +16,70 @@ const Themedif = () => {
 	const [error, setError] = useState<string | null>(null);
 
 	const buildApiUrl = () => {
-		let url = import.meta.env.VITE_API_URL;
+		// URL fixe de l'API
+		let url = "https://quizzapi.jomoreschi.fr/api/v1/quiz";
+
+		// Ajouter les paramètres de catégorie et difficulté si définis
 		if (category) url += `?category=${category}`;
 		if (difficulty)
 			url += category
 				? `&difficulty=${difficulty}`
 				: `?difficulty=${difficulty}`;
+
 		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-		console.log("URL construite:", url);
+		console.log("URL construite:", url); // Debug
 		return url;
 	};
 
 	const fetchData = async () => {
 		setLoading(true);
 		setError(null);
+
 		const apiUrl = buildApiUrl();
-		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-		console.log("Fetching data from:", apiUrl);
 
-		try {
-			const response = await fetch(apiUrl);
-			if (!response.ok) {
-				throw new Error(`Erreur HTTP: ${response.status}`);
-			}
-
-			const result = await response.json();
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-			console.log("Réponse API:", result);
-
-			if (
-				result &&
-				Array.isArray(result.results) &&
-				result.results.length > 0
-			) {
-				const randomQuestion =
-					result.results[Math.floor(Math.random() * result.results.length)];
-				setData(randomQuestion);
-			} else {
-				setError("Aucune question trouvée pour les critères sélectionnés.");
-				setData(null);
-			}
-		} catch (error) {
-			console.error("Erreur lors de la récupération des données:", error);
-			setError(`Erreur lors de la récupération des données: ${error.message}`);
-		} finally {
-			setLoading(false);
-		}
+		// Appel à l'API avec l'URL construite
+		fetch(apiUrl)
+			.then((response) => {
+				// Vérifie si la réponse est valide
+				if (!response.ok) {
+					throw new Error(`Erreur HTTP: ${response.status}`);
+				}
+				return response.json(); // Convertir la réponse en JSON
+			})
+			.then((data) => {
+				// Vérifier si des questions sont présentes dans la réponse
+				if (data && Array.isArray(data.results) && data.results.length > 0) {
+					const randomQuestion =
+						data.results[Math.floor(Math.random() * data.results.length)];
+					setData(randomQuestion);
+				} else {
+					setError("Aucune question trouvée pour les critères sélectionnés.");
+				}
+			})
+			.catch((error) => {
+				console.error("Erreur lors de la récupération des données:", error);
+				setError(
+					`Erreur lors de la récupération des données: ${error.message}`,
+				);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	};
 
+	// Appeler fetchData uniquement lorsque la catégorie et la difficulté sont définies
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		fetchData();
+		if (category && difficulty) {
+			fetchData();
+		}
 	}, [category, difficulty]);
 
 	return (
 		<div>
 			<h1>Quiz App</h1>
 
+			{/* Sélection de la catégorie */}
 			<label>
 				Catégorie :
 				<select onChange={(e) => setCategory(e.target.value || null)}>
@@ -85,6 +92,7 @@ const Themedif = () => {
 				</select>
 			</label>
 
+			{/* Sélection de la difficulté */}
 			<label>
 				Difficulté :
 				<select onChange={(e) => setDifficulty(e.target.value || null)}>
@@ -95,6 +103,7 @@ const Themedif = () => {
 				</select>
 			</label>
 
+			{/* Affichage des données, erreur ou état de chargement */}
 			<div>
 				{loading ? (
 					<p>Chargement des données...</p>
@@ -124,7 +133,9 @@ const Themedif = () => {
 						</p>
 					</div>
 				) : (
-					<p>Aucune question trouvée pour les critères sélectionnés.</p>
+					<p>
+						Sélectionnez une catégorie et une difficulté pour voir une question.
+					</p>
 				)}
 			</div>
 		</div>

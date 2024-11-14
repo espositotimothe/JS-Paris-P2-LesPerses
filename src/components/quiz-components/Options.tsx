@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Quiz = {
 	_id: string;
@@ -17,30 +17,17 @@ const shuffleArray = (array: string[]) => {
 	return array;
 };
 
-export default function Options() {
-	const [quiz, setQuiz] = useState<Quiz | null>(null);
-	const [allAnswers, setAllAnswers] = useState<string[]>([]);
-	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+//badAnswers = API badAnswers
+// answer= la bonne réponse
+export default function Options({ badAnswers, answer, _id }) {
+	// const [quiz, setQuiz] = useState<Quiz | null>(null);
+	// console.log(badAnswers)
 
-	useEffect(() => {
-		fetch("https://quizzapi.jomoreschi.fr/api/v1/quiz")
-			.then((response) => response.json())
-			.then((data) => {
-				if (Array.isArray(data.quizzes) && data.quizzes.length > 0) {
-					setQuiz(data.quizzes[0]);
-					const answers = shuffleArray([
-						data.quizzes[0].answer,
-						...data.quizzes[0].badAnswers,
-					]);
-					setAllAnswers(answers);
-				} else {
-					console.error("Aucun quiz trouvé");
-				}
-			})
-			.catch((error) =>
-				console.error("Erreur lors de la récupération du quiz :", error),
-			);
-	}, []);
+	badAnswers.unshift(answer);
+	const answers = shuffleArray(badAnswers);
+	// console.log(answers)
+	//const [allAnswers, setAllAnswers] = useState<string[]>(answers);
+	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
 	const handleAnswerClick = (answer: string) => {
 		setSelectedAnswer(answer);
@@ -48,31 +35,17 @@ export default function Options() {
 
 	return (
 		<div className="options">
-			{allAnswers.map((answer) => (
-				<button
-					key={`${answer}-${quiz?._id}`} // Generate unique key using answer text and quiz ID
-					type="button"
-					className={`option ${selectedAnswer === answer ? "selected" : ""}`}
-					onClick={() => handleAnswerClick(answer)}
-				>
-					{answer}
-				</button>
-			))}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers[0]}
-				</button>
-			)}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers[1]}
-				</button>
-			)}
-			{quiz && (
-				<button type="button" className="option">
-					{quiz.badAnswers[2]}
-				</button>
-			)}
+			{answers.length > 0 &&
+				answers.map((answer, _id) => (
+					<button
+						key={quiz._id}
+						type="button"
+						className={`option ${selectedAnswer === answer ? "selected" : ""}`}
+						onClick={() => handleAnswerClick(answer)}
+					>
+						{answer}
+					</button>
+				))}
 		</div>
 	);
 }

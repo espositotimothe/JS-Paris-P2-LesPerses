@@ -11,7 +11,17 @@ type Quiz = {
 	difficulty: "facile" | "normal" | "difficile";
 };
 
+const shuffleArray = (array: string[]) => {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+};
+
 export default function Question() {
+	const [quizzes, setQuizzes] = useState<Quiz[]>([]);
+	const [currentIndex, setCurrentIndex] = useState(0);
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 
 	useEffect(() => {
@@ -19,6 +29,7 @@ export default function Question() {
 			.then((response) => response.json())
 			.then((data) => {
 				if (Array.isArray(data.quizzes) && data.quizzes.length > 0) {
+					setQuizzes(data.quizzes);
 					setQuiz(data.quizzes[0]);
 				} else {
 					console.error("Aucun quiz trouvé");
@@ -29,26 +40,38 @@ export default function Question() {
 			);
 	}, []);
 
-	const quizzesItems = quizzes.map((quiz) => ({ quiz }));
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const handleClick = () => {
+	const handleQuestionsClick = () => {
 		setCurrentIndex((prevIndex) =>
-			prevIndex < quizzesItems.length - 1 ? prevIndex + 1 : 0,
+			prevIndex < quizzes.length - 1 ? prevIndex + 1 : 0,
 		);
 	};
 
+	useEffect(() => {
+		setQuiz(quizzes[currentIndex]);
+	}, [quizzes, currentIndex]);
+
 	return (
 		<>
-			<div className="question-container">
-				{quiz && <h2 className="question">{quiz.question}</h2>}
-				{!quiz && <div>Chargement du quiz...</div>}
-			</div>
-			<div className="options">
-				<Options />
-				<button type="button" className="next" onClick={handleClick}>
-					Suivant
-				</button>
-			</div>
+			{quiz && (
+				<div className="question-container">
+					<h2 className="question">{quiz.question}</h2>
+					<div className="options">
+						<Options
+							badAnswers={quiz.badAnswers}
+							answer={quiz.answer}
+							_id={quiz._id}
+						/>
+						<button
+							type="button"
+							className="next"
+							onClick={handleQuestionsClick}
+						>
+							Suivant
+						</button>
+					</div>
+				</div>
+			)}
+			{!quiz && <div>Chargement du quiz...</div>}
 		</>
 	);
 }

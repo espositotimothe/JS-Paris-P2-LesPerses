@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Question {
 	question: string;
 	answer: string;
-	incorrect_answers: string[];
+	badAnswers: string[];
 	category: string;
 	difficulty: string;
+	quiz: string;
 }
 
 const Themedif = () => {
@@ -15,64 +16,74 @@ const Themedif = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [error, setError] = useState<string | null>(null);
 
-	const buildApiUrl = () => {
-		let url = import.meta.env.VITE_API_URL;
-		if (category) url += `?category=${category}`;
-		if (difficulty)
-			url += category
-				? `&difficulty=${difficulty}`
-				: `?difficulty=${difficulty}`;
-		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-		console.log("URL construite:", url);
-		return url;
-	};
-
-	const fetchData = async () => {
-		setLoading(true);
-		setError(null);
-		const apiUrl = buildApiUrl();
-		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-		console.log("Fetching data from:", apiUrl);
-
-		try {
-			const response = await fetch(apiUrl);
-			if (!response.ok) {
-				throw new Error(`Erreur HTTP: ${response.status}`);
-			}
-
-			const result = await response.json();
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-			console.log("Réponse API:", result);
-
-			if (
-				result &&
-				Array.isArray(result.results) &&
-				result.results.length > 0
-			) {
-				const randomQuestion =
-					result.results[Math.floor(Math.random() * result.results.length)];
-				setData(randomQuestion);
-			} else {
-				setError("Aucune question trouvée pour les critères sélectionnés.");
-				setData(null);
-			}
-		} catch (error) {
-			console.error("Erreur lors de la récupération des données:", error);
-			setError(`Erreur lors de la récupération des données: ${error.message}`);
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
+		// Fonction pour construire l'URL filtrée avec les paramètres
+		const buildApiUrl = () => {
+			let url = import.meta.env.VITE_API_URL; // URL de base de l'API
+
+			// Ajouter la catégorie à l'URL si elle est définie
+			if (category) {
+				url += `?category=${category}`;
+			}
+
+			// Ajouter la difficulté à l'URL si elle est définie
+			if (difficulty) {
+				url += category
+					? `&difficulty=${difficulty}`
+					: `?difficulty=${difficulty}`;
+			}
+
+			return url;
+		};
+
+		// Fonction pour récupérer les données depuis l'API
+		const fetchData = async () => {
+			setLoading(true);
+			setError(null);
+
+			const apiUrl = buildApiUrl(); // Construire l'URL
+
+			try {
+				const response = await fetch(apiUrl);
+
+				// Vérification de la réponse
+				if (!response.ok) {
+					throw new Error(`Erreur HTTP: ${response.status}`);
+				}
+
+				const result = await response.json();
+
+				// Si des questions sont présentes dans le résultat
+				if (
+					result &&
+					Array.isArray(result.quizzes) &&
+					result.quizzes.length > 0
+				) {
+					// Récupérer une question aléatoire
+					const randomQuestion =
+						result.quizzes[Math.floor(Math.random() * result.quizzes.length)];
+
+					// Mettre à jour l'état avec la question récupérée
+					setData(randomQuestion);
+				} else {
+					setError("Aucune question trouvée pour les critères sélectionnés.");
+					setData(null);
+				}
+			} catch (error) {
+				setError(`Error: ${error}`); // Utiliser err.message pour afficher l'erreur
+			} finally {
+				setLoading(false);
+			}
+		};
+
 		fetchData();
-	}, [category, difficulty]);
+	}, [category, difficulty]); // Ajouter category et difficulty comme dépendances
 
 	return (
 		<div>
 			<h1>Quiz App</h1>
 
+			{/* Sélecteur pour la catégorie */}
 			<label>
 				Catégorie :
 				<select onChange={(e) => setCategory(e.target.value || null)}>
@@ -85,6 +96,7 @@ const Themedif = () => {
 				</select>
 			</label>
 
+			{/* Sélecteur pour la difficulté */}
 			<label>
 				Difficulté :
 				<select onChange={(e) => setDifficulty(e.target.value || null)}>
@@ -96,6 +108,7 @@ const Themedif = () => {
 			</label>
 
 			<div>
+				{/* Affichage du statut de chargement */}
 				{loading ? (
 					<p>Chargement des données...</p>
 				) : error ? (
@@ -119,8 +132,7 @@ const Themedif = () => {
 							<strong>Difficulté :</strong> {data.difficulty}
 						</p>
 						<p>
-							<strong>Mauvaises réponses :</strong>{" "}
-							{data.incorrect_answers.join(", ")}
+							<strong>Mauvaises réponses :</strong> {data.badAnswers.join(", ")}
 						</p>
 					</div>
 				) : (

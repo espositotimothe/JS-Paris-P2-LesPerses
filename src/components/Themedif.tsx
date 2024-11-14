@@ -107,6 +107,7 @@ const Themedif = () => {
 				</select>
 			</label>
 
+			{/* Affichage des données, erreur ou état de chargement */}
 			<div>
 				{/* Affichage du statut de chargement */}
 				{loading ? (
@@ -136,7 +137,9 @@ const Themedif = () => {
 						</p>
 					</div>
 				) : (
-					<p>Aucune question trouvée pour les critères sélectionnés.</p>
+					<p>
+						Sélectionnez une catégorie et une difficulté pour voir une question.
+					</p>
 				)}
 			</div>
 		</div>

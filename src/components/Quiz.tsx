@@ -1,3 +1,3 @@
-function quiz() {}
+function Quiz() {}
 
 export default Quiz;

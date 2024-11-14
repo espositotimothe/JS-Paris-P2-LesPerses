@@ -1,15 +1,12 @@
 type NextButtonProps = {
-	onClickNext: () => void;
+	handleQuestionsClick: () => void;
 };
 
-function NextButton({ onClickNext }: NextButtonProps) {
+function NextButton({ handleQuestionsClick }: NextButtonProps) {
 	return (
-		<div className="navigation-buttons">
-			<button type="button" className="next" onClick={onClickNext}>
-				Suivant
-			</button>
-			{/* <button className="finish">Fin</button> */}
-		</div>
+		<button type="button" className="next" onClick={handleQuestionsClick}>
+			Suivant
+		</button>
 	);
 }
 

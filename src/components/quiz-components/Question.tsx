@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import NextButton from "./NextButton";
 import Options from "./Options";
-// import NextButton from "./NextButton";
 
 type Quiz = {
 	_id: string;
@@ -56,13 +56,14 @@ export default function Question() {
 							category={quiz.category}
 							difficulty={quiz.difficulty}
 						/>
-						<button
+						{/* <button
 							type="button"
 							className="next"
 							onClick={handleQuestionsClick}
 						>
 							Suivant
-						</button>
+						</button> */}
+						<NextButton handleQuestionsClick={handleQuestionsClick} />
 					</div>
 				</div>
 			)}

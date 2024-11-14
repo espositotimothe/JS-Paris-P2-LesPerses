@@ -19,7 +19,7 @@ const shuffleArray = (array: string[]) => {
 
 //badAnswers = API badAnswers
 // answer= la bonne réponse
-export default function Options({ badAnswers, answer, _id }) {
+export default function Options({ badAnswers, answer }: Quiz) {
 	// const [quiz, setQuiz] = useState<Quiz | null>(null);
 	// console.log(badAnswers)
 
@@ -36,9 +36,9 @@ export default function Options({ badAnswers, answer, _id }) {
 	return (
 		<div className="options">
 			{answers.length > 0 &&
-				answers.map((answer, _id) => (
+				answers.map((answer) => (
 					<button
-						key={answer._id}
+						key={answer}
 						type="button"
 						className={`option ${selectedAnswer === answer ? "selected" : ""}`}
 						onClick={() => handleAnswerClick(answer)}

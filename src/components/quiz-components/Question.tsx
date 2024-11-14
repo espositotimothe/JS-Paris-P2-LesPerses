@@ -11,14 +11,6 @@ type Quiz = {
 	difficulty: "facile" | "normal" | "difficile";
 };
 
-const shuffleArray = (array: string[]) => {
-	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i], array[j]] = [array[j], array[i]];
-	}
-	return array;
-};
-
 export default function Question() {
 	const [quizzes, setQuizzes] = useState<Quiz[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,6 +52,9 @@ export default function Question() {
 							badAnswers={quiz.badAnswers}
 							answer={quiz.answer}
 							_id={quiz._id}
+							question={quiz.question}
+							category={quiz.category}
+							difficulty={quiz.difficulty}
 						/>
 						<button
 							type="button"

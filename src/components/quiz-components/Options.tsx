@@ -38,7 +38,7 @@ export default function Options({ badAnswers, answer, _id }) {
 			{answers.length > 0 &&
 				answers.map((answer, _id) => (
 					<button
-						key={quiz._id}
+						key={answer._id}
 						type="button"
 						className={`option ${selectedAnswer === answer ? "selected" : ""}`}
 						onClick={() => handleAnswerClick(answer)}

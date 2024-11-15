@@ -1,15 +1,23 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { Question } from "../Themedif";
+
 type NextButtonProps = {
-	onClickNext: () => void;
+	data: Question[] | null;
+	setCurrentIndex: Dispatch<SetStateAction<number>>;
 };
 
-function NextButton({ onClickNext }: NextButtonProps) {
+function NextButton({ data, setCurrentIndex }: NextButtonProps) {
+	const handleQuestionsClick = () => {
+		if (data) {
+			setCurrentIndex((prevIndex) =>
+				prevIndex < data.length - 1 ? prevIndex + 1 : 0,
+			);
+		}
+	};
 	return (
-		<div className="navigation-buttons">
-			<button type="button" className="next" onClick={onClickNext}>
-				Suivant
-			</button>
-			{/* <button className="finish">Fin</button> */}
-		</div>
+		<button type="button" className="next" onClick={handleQuestionsClick}>
+			Suivant
+		</button>
 	);
 }
 

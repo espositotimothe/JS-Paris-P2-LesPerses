@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
-// import NextButton from "./NextButton";
+import NextButton from "./NextButton";
 import Options from "./Options";
 
 type Question = {
@@ -10,6 +10,12 @@ type Question = {
 	badAnswers: string[];
 	category: string;
 	difficulty: "facile" | "normal" | "difficile";
+	quiz: string;
+};
+
+type Quiz = {
+	_id: string;
+	questions: Question[];
 };
 
 function Questions({
@@ -20,14 +26,6 @@ function Questions({
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 	const currentQuestion = data ? data[currentIndex] : null;
-
-	const handleQuestionsClick = () => {
-		if (data) {
-			setCurrentIndex((prevIndex) =>
-				prevIndex < data.length - 1 ? prevIndex + 1 : 0,
-			);
-		}
-	};
 
 	useEffect(() => {
 		setQuiz(quizzes[currentIndex]);
@@ -45,9 +43,8 @@ function Questions({
 					<p>Aucune question trouvée.</p>
 				)}
 			</div>
-			<button type="button" className="next" onClick={handleQuestionsClick}>
-				Suivant
-			</button>
+
+			<NextButton data={data} setCurrentIndex={setCurrentIndex} />
 		</>
 	);
 }

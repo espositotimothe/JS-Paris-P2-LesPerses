@@ -8,7 +8,7 @@ export interface Question {
 	answer: string;
 	badAnswers: string[];
 	category: string;
-	difficulty: string;
+	difficulty: "facile" | "normal" | "difficile";
 	quiz: string;
 }
 

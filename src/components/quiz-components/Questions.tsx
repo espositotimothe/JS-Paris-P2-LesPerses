@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
+import "./Questions.css";
 
 type Question = {
 	_id: string;
@@ -33,14 +34,14 @@ function Questions({
 
 	return (
 		<>
-			<div>
+			<div className="question-container">
 				{currentQuestion ? (
-					<div key={currentQuestion._id}>
+					<div className="question" key={currentQuestion._id}>
 						<h2>{currentQuestion.question}</h2>
 						<Options {...currentQuestion} />
 					</div>
 				) : (
-					<p>Aucune question trouvée.</p>
+					<p className="question-error">Aucune question trouvée.</p>
 				)}
 			</div>
 

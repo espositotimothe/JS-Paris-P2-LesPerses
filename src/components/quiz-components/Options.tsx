@@ -19,14 +19,7 @@ const shuffleArray = (array: string[]) => {
 
 //badAnswers = API badAnswers
 // answer= la bonne réponse
-export default function Options({
-	_id,
-	question,
-	answer,
-	badAnswers,
-	category,
-	difficulty,
-}: Quiz) {
+export default function Options({ answer, badAnswers }: Quiz) {
 	// const [quiz, setQuiz] = useState<Quiz | null>(null);
 	// console.log(badAnswers)
 

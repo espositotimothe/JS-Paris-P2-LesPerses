@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
+import Validate from "./Validate";
 
 type Question = {
 	_id: string;
@@ -43,7 +44,6 @@ function Questions({
 					<p>Aucune question trouvée.</p>
 				)}
 			</div>
-
 			<NextButton data={data} setCurrentIndex={setCurrentIndex} />
 		</>
 	);

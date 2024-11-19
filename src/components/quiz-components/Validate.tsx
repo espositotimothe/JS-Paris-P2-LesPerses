@@ -2,31 +2,32 @@ interface ValidateProps {
 	selectedAnswer: string | null;
 	correctAnswer: string;
 	onValidate: (isValid: boolean) => void;
+	isValidated: boolean;
 }
 
-const Validate: React.FC<ValidateProps> = ({
+export default function Validate({
 	selectedAnswer,
 	correctAnswer,
 	onValidate,
-}) => {
+	isValidated,
+}: ValidateProps) {
 	const handleValidation = () => {
-		if (selectedAnswer !== null) {
+		if (!isValidated && selectedAnswer !== null) {
 			const isValid = selectedAnswer === correctAnswer;
-
 			onValidate(isValid);
-		} else {
-			onValidate(false);
 		}
 	};
 
 	return (
-		<div className="validate">
-			<button type="button" onClick={handleValidation}>
+		<div>
+			<button
+				type="button"
+				className="validate-button"
+				onClick={handleValidation}
+				disabled={isValidated}
+			>
 				Valider
 			</button>
-			{"·"}
 		</div>
 	);
-};
-
-export default Validate;
+}

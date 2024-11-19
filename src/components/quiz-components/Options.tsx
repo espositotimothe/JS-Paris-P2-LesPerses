@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Validate from "./Validate";
 
 type Quiz = {
 	_id: string;
@@ -19,14 +20,7 @@ const shuffleArray = (array: string[]) => {
 
 //badAnswers = API badAnswers
 // answer= la bonne réponse
-export default function Options({
-	_id,
-	question,
-	answer,
-	badAnswers,
-	category,
-	difficulty,
-}: Quiz) {
+export default function Options({ answer, badAnswers }: Quiz) {
 	// const [quiz, setQuiz] = useState<Quiz | null>(null);
 	// console.log(badAnswers)
 
@@ -36,24 +30,43 @@ export default function Options({
 	// console.log(answers)
 	//const [allAnswers, setAllAnswers] = useState<string[]>(answers);
 	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+	const [isValidated, setIsValidated] = useState(false);
 
-	const handleAnswerClick = (answer: string) => {
-		setSelectedAnswer(answer);
+	const handleAnswerClick = (selected: string) => {
+		if (!isValidated) setSelectedAnswer(selected);
+	};
+
+	const handleValidate = (isValid: boolean) => {
+		//console.log(isValid ? "Bonne réponse !" : "Mauvaise réponse !");
+		setIsValidated(true);
 	};
 
 	return (
-		<div className="options">
-			{answers.length > 0 &&
-				answers.map((answer) => (
-					<button
-						key={answer}
-						type="button"
-						className={`option ${selectedAnswer === answer ? "selected" : ""}`}
-						onClick={() => handleAnswerClick(answer)}
-					>
-						{answer}
-					</button>
-				))}
+		<div>
+			<div className="options">
+				{answers.length > 0 &&
+					answers.map((option) => (
+						<button
+							key={option}
+							type="button"
+							// className={`option ${selectedAnswer === answer ? "selected" : ""}`}
+							onClick={() => handleAnswerClick(option)}
+						>
+							{option}
+						</button>
+					))}
+				<Validate
+					selectedAnswer={selectedAnswer}
+					correctAnswer={answer}
+					onValidate={handleValidate}
+					isValidated={isValidated}
+				/>
+			</div>
+			{isValidated && (
+				<div className="validation-message">
+					{selectedAnswer === answer ? "Bonne réponse !" : "Mauvaise réponse !"}
+				</div>
+			)}
 		</div>
 	);
 }

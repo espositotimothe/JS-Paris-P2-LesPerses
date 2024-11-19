@@ -3,7 +3,7 @@ import Timer from "./Timer";
 function QuizMain() {
 	return (
 		<>
-			<section className="quiz">
+			{/* <section className="quiz">
 				<div className="progress-container">
 					<progress> </progress>
 				</div>
@@ -14,7 +14,7 @@ function QuizMain() {
 					</p>
 					<Timer />
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 }

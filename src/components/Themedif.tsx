@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
+
+import "./Theme.css";
+
 import "./Difficulty.css";
+
 
 export interface Question {
 	_id: string;
@@ -69,56 +73,109 @@ const Themedif = ({
 			{/* Sélecteur pour la catégorie */}
 			{step === 1 && (
 				<div>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"art_litterature"}
-						onClick={() => setStep(2)}
-					>
-						Art litterature
-					</button>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"tv_cinema"}
-						onClick={() => setStep(2)}
-					>
-						Cinema
-					</button>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"sport"}
-						onClick={() => setStep(2)}
-					>
-						Sport
-					</button>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"jeux_videos"}
-						onClick={() => setStep(2)}
-					>
-						Jeux videos
-					</button>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"musique"}
-						onClick={() => setStep(2)}
-					>
-						Musique
-					</button>
+					<h1>Thématique</h1>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"art_litterature"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Art litterature
+							<img
+								src="src\images\Logo-littérature-sans-fond.png"
+								alt="Art et litterature"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"tv_cinema"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Cinema
+							<img
+								src="src\images\Logo-cinéma-sans-fond.png"
+								alt="Cinema"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"sport"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Sport
+							<img
+								src="src\images\Logo-sport-ballon-sans-fond.png"
+								alt="Sport"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"jeux_videos"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Jeux videos
+							<img
+								src="src\images\logo-jeux_vidéos-sans-fond.png"
+								alt="Jeux videos"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"musique"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Musique
+							<img
+								src="src\images\logo-musique-sans-fond.png"
+								alt="Musique"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"culture_generale"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Culture generale
+							<img
+								src="src/images/logo-cultureG-sans-fond.png"
+								alt="Culture generale"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
 				</div>
 			)}
 

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
-import Validate from "./Validate";
 
 type Question = {
 	_id: string;

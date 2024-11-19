@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Validate from "./Validate";
+import CheckAnswer from "./CheckAnswer";
 
 type Quiz = {
 	_id: string;
@@ -55,7 +55,7 @@ export default function Options({ answer, badAnswers }: Quiz) {
 							{option}
 						</button>
 					))}
-				<Validate
+				<CheckAnswer
 					selectedAnswer={selectedAnswer}
 					correctAnswer={answer}
 					onValidate={handleValidate}

@@ -5,7 +5,7 @@ interface ValidateProps {
 	isValidated: boolean;
 }
 
-export default function Validate({
+export default function CheckAnswer({
 	selectedAnswer,
 	correctAnswer,
 	onValidate,
@@ -13,8 +13,7 @@ export default function Validate({
 }: ValidateProps) {
 	const handleValidation = () => {
 		if (!isValidated && selectedAnswer !== null) {
-			const isValid = selectedAnswer === correctAnswer;
-			onValidate(isValid);
+			onValidate(selectedAnswer === correctAnswer);
 		}
 	};
 

@@ -135,7 +135,7 @@ const Themedif = ({
 							value={"facile"}
 							onClick={() => setStep(3)}
 						>
-							<img src="src\images\1étoile-sans-fond.png" alt="facile" />
+							<img src="src\images\1etoile-sans-fond.png" alt="facile" />
 						</button>
 
 						<button
@@ -146,7 +146,7 @@ const Themedif = ({
 							value={"normal"}
 							onClick={() => setStep(3)}
 						>
-							<img src="src\images\2étoiles-sans-fond.png" alt="normal" />
+							<img src="src\images\2etoiles-sans-fond.png" alt="normal" />
 						</button>
 
 						<button
@@ -157,7 +157,7 @@ const Themedif = ({
 							value={"difficile"}
 							onClick={() => setStep(3)}
 						>
-							<img src="src\images\3étoiles-sans-fond.png" alt="difficile" />
+							<img src="src\images\3etoiles-sans-fond.png" alt="difficile" />
 						</button>
 					</div>
 

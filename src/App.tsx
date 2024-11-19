@@ -9,7 +9,8 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Themedif data={data} setData={setData} />
+
+			{/* <Themedif data={data} setData={setData} /> */}
 		</>
 	);
 }

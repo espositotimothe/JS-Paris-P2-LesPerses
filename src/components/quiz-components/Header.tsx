@@ -1,16 +1,40 @@
-import QuizMain from "./QuizMain";
+import "./Header.css";
+import { useState } from "react";
+import Themedif from "../Themedif";
 
-function Header() {
+export default function Header() {
+	const [showFilters, setShowFilters] = useState(false);
+	const handleStartQuiz = () => {
+		setShowFilters(true);
+	};
+
 	return (
 		<>
-			<section className="welcome">
-				{/* <h1>Quiz</h1> */}
-				{/* <p>Total questions : 10</p> */}
-				{/* <button type="button">Lance le quiz</button> */}
-				<QuizMain />
-			</section>
+			{!showFilters ? (
+				<section className="welcome">
+					<h1 className="quiz-title">Quiz</h1>
+					<p className="quiz-description">
+						Découvrez notre sélection de quiz, incluant des classiques pour
+						parfaire vos connaissances, des quiz aléatoires pour les curieux en
+						quête de surprises, et un défi spécial inspiré du célèbre jeu
+						télévisé, le "Qui veut gagner des millions". Seul ou entre amis,
+						plongez dans l’aventure, apprenez, et relevez les défis pour tenter
+						d'atteindre le score parfait.
+					</p>
+					<p className="quiz-description">
+						Prêt à tester vos limites ? Que le jeu commence !
+					</p>
+					<button
+						type="button"
+						className="button-start"
+						onClick={handleStartQuiz}
+					>
+						Choisis ton quiz
+					</button>
+				</section>
+			) : (
+				<Themedif />
+			)}
 		</>
 	);
 }
-
-export default Header;

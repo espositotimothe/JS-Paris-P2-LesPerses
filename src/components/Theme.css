@@ -11,6 +11,8 @@
 	align-items: center;
 	justify-content: center;
 	background-color: white;
+	border: 0;
+	box-shadow: .3rem .3rem .3rem grey;
 }
 
 .category-container {
@@ -37,6 +39,8 @@
 		align-items: center;
 		justify-content: center;
 		background-color: white;
+		border: 0;
+		box-shadow: .3rem .3rem .3rem grey;
 	}
 
 	.category-container {

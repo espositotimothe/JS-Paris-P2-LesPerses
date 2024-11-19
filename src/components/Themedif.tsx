@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
+import "./Difficulty.css";
 
 export interface Question {
 	_id: string;
@@ -65,8 +66,6 @@ const Themedif = ({
 	}, [category, difficulty, setData]); // Ajouter category et difficulty comme dépendances
 	return (
 		<div>
-			<h1>Quiz App</h1>
-
 			{/* Sélecteur pour la catégorie */}
 			{step === 1 && (
 				<div>
@@ -125,42 +124,48 @@ const Themedif = ({
 
 			{/* Sélecteur pour la difficulté */}
 			{step === 2 && (
-				<div>
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"facile"}
-						onClick={() => setStep(3)}
-					>
-						Facile
-					</button>
+				<div className="difficulty">
+					<h1>Difficulté</h1>
+					<div className="choice">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"facile"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\1étoile-sans-fond.png" alt="facile" />
+						</button>
 
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"normal"}
-						onClick={() => setStep(3)}
-					>
-						Normal
-					</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"normal"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\2étoiles-sans-fond.png" alt="normal" />
+						</button>
 
-					<button
-						type="button"
-						onSelect={(e) =>
-							setCategory((e.target as HTMLButtonElement).value || null)
-						}
-						value={"difficile"}
-						onClick={() => setStep(3)}
-					>
-						Difficile
-					</button>
-					<button type="button" onClick={() => setStep(1)}>
-						Previous
-					</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"difficile"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\3étoiles-sans-fond.png" alt="difficile" />
+						</button>
+					</div>
+
+					<div className="back">
+						<button type="button" onClick={() => setStep(1)}>
+							<img src="src\images\Back-sans-fond.png" alt="facile" />
+						</button>
+					</div>
 				</div>
 			)}
 

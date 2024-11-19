@@ -27,10 +27,6 @@ function Questions({
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 	const currentQuestion = data ? data[currentIndex] : null;
 
-	useEffect(() => {
-		setQuiz(quizzes[currentIndex]);
-	}, [quizzes, currentIndex]);
-
 	return (
 		<>
 			<div>

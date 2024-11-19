@@ -18,17 +18,9 @@ const shuffleArray = (array: string[]) => {
 	return array;
 };
 
-//badAnswers = API badAnswers
-// answer= la bonne réponse
 export default function Options({ answer, badAnswers }: Quiz) {
-	// const [quiz, setQuiz] = useState<Quiz | null>(null);
-	// console.log(badAnswers)
-
-	// badAnswers.unshift(answer);
-	// const answers = shuffleArray(badAnswers);
 	const answers = shuffleArray([answer, ...badAnswers]);
-	// console.log(answers)
-	//const [allAnswers, setAllAnswers] = useState<string[]>(answers);
+
 	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 	const [isValidated, setIsValidated] = useState(false);
 
@@ -37,7 +29,6 @@ export default function Options({ answer, badAnswers }: Quiz) {
 	};
 
 	const handleValidate = (isValid: boolean) => {
-		//console.log(isValid ? "Bonne réponse !" : "Mauvaise réponse !");
 		setIsValidated(true);
 	};
 
@@ -49,7 +40,6 @@ export default function Options({ answer, badAnswers }: Quiz) {
 						<button
 							key={option}
 							type="button"
-							// className={`option ${selectedAnswer === answer ? "selected" : ""}`}
 							onClick={() => handleAnswerClick(option)}
 						>
 							{option}

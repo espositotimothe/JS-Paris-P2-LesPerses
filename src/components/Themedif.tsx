@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 
 export interface Question {
+	_id: string;
 	question: string;
 	answer: string;
 	badAnswers: string[];
 	category: string;
-	difficulty: string;
+	difficulty: "facile" | "normal" | "difficile";
 	quiz: string;
 }
 
 const Themedif = ({
 	setData,
+	data,
 }: { setData: Dispatch<Question[] | null>; data: Question[] | null }) => {
 	const [category, setCategory] = useState<string | null>(null);
 	const [difficulty, setDifficulty] = useState<string | null>(null);
+	const [step, setStep] = useState(1);
 
 	useEffect(() => {
 		// Fonction pour construire l'URL filtrée avec les paramètres
@@ -65,28 +68,103 @@ const Themedif = ({
 			<h1>Quiz App</h1>
 
 			{/* Sélecteur pour la catégorie */}
-			<label>
-				Catégorie :
-				<select onChange={(e) => setCategory(e.target.value || null)}>
-					<option value="">Toutes</option>
-					<option value="art_litterature">Art et Littérature</option>
-					<option value="tv_cinema">Cinéma</option>
-					<option value="jeux_videos">Jeux Vidéos</option>
-					<option value="musique">Musique</option>
-					<option value="sport">Sport</option>
-				</select>
-			</label>
+			{step === 1 && (
+				<div>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"art_litterature"}
+						onClick={() => setStep(2)}
+					>
+						Art litterature
+					</button>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"tv_cinema"}
+						onClick={() => setStep(2)}
+					>
+						Cinema
+					</button>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"sport"}
+						onClick={() => setStep(2)}
+					>
+						Sport
+					</button>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"jeux_videos"}
+						onClick={() => setStep(2)}
+					>
+						Jeux videos
+					</button>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"musique"}
+						onClick={() => setStep(2)}
+					>
+						Musique
+					</button>
+				</div>
+			)}
 
 			{/* Sélecteur pour la difficulté */}
-			<label>
-				Difficulté :
-				<select onChange={(e) => setDifficulty(e.target.value || null)}>
-					<option value="">Toutes</option>
-					<option value="facile">Facile</option>
-					<option value="normal">Normal</option>
-					<option value="difficile">Difficile</option>
-				</select>
-			</label>
+			{step === 2 && (
+				<div>
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"facile"}
+						onClick={() => setStep(3)}
+					>
+						Facile
+					</button>
+
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"normal"}
+						onClick={() => setStep(3)}
+					>
+						Normal
+					</button>
+
+					<button
+						type="button"
+						onSelect={(e) =>
+							setCategory((e.target as HTMLButtonElement).value || null)
+						}
+						value={"difficile"}
+						onClick={() => setStep(3)}
+					>
+						Difficile
+					</button>
+					<button type="button" onClick={() => setStep(1)}>
+						Previous
+					</button>
+				</div>
+			)}
+
+			{/* Affiche des questions */}
 		</div>
 	);
 };

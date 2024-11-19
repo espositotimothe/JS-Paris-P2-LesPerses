@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Question } from "./components/Themedif";
 import "./App.css";
 import Themedif from "./components/Themedif";
+import Footer from "./components/quiz-components/Footer";
 import Header from "./components/quiz-components/Header";
 import Questions from "./components/quiz-components/Questions";
 function App() {
@@ -10,6 +11,7 @@ function App() {
 		<>
 			<Header />
 			{/* <Themedif data={data} setData={setData} /> */}
+			<Footer />
 		</>
 	);
 }

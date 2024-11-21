@@ -1,0 +1,19 @@
+.question-container {
+	display: flex;
+	justify-content: center;
+	background-color: var(--home-fond-blocks);
+}
+
+.question {
+	background-color: var(--home-fond-main);
+	border-radius: 20px;
+	margin: 2rem;
+	padding: 1rem;
+}
+
+.question-error {
+	background-color: red;
+	border-radius: 20px;
+	margin: 2rem;
+	padding: 1rem;
+}

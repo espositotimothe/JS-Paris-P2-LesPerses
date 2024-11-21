@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { Question } from "../Themedif";
+import "./NextButton.css";
 
 type NextButtonProps = {
 	data: Question[] | null;
@@ -15,9 +16,11 @@ function NextButton({ data, setCurrentIndex }: NextButtonProps) {
 		}
 	};
 	return (
-		<button type="button" className="next" onClick={NextQuestion}>
-			Suivant
-		</button>
+		<div className="button-next-container">
+			<button type="button" className="button-next" onClick={NextQuestion}>
+				Suivant
+			</button>
+		</div>
 	);
 }
 

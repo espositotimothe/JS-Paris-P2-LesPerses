@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
 import "./Questions.css";
+import QuizMain from "./QuizMain";
 
 type Question = {
 	_id: string;
@@ -14,37 +15,25 @@ type Question = {
 	quiz: string;
 };
 
-type Quiz = {
-	_id: string;
-	questions: Question[];
-};
-
 function Questions({
 	data,
-	setData,
 }: { data: Question[] | null; setData: Dispatch<Question[] | null> }) {
-	const [quizzes, setQuizzes] = useState<Quiz[]>([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [quiz, setQuiz] = useState<Quiz | null>(null);
 	const currentQuestion = data ? data[currentIndex] : null;
-
-	useEffect(() => {
-		setQuiz(quizzes[currentIndex]);
-	}, [quizzes, currentIndex]);
 
 	return (
 		<>
+			<QuizMain />
 			<div className="question-container">
 				{currentQuestion ? (
-					<div className="question" key={currentQuestion._id}>
-						<h2>{currentQuestion.question}</h2>
+					<div key={currentQuestion._id}>
+						<h2 className="question">{currentQuestion.question}</h2>
 						<Options {...currentQuestion} />
 					</div>
 				) : (
 					<p className="question-error">Aucune question trouvée.</p>
 				)}
 			</div>
-
 			<NextButton data={data} setCurrentIndex={setCurrentIndex} />
 		</>
 	);

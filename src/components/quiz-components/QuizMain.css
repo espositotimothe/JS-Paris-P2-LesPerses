@@ -1,0 +1,22 @@
+.quiz {
+	background-color: var(--home-fond-blocks);
+}
+
+.progress-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.question-number {
+	background-color: var(--home-fond-main);
+	margin: 2rem 2rem 1rem 2rem;
+	border: none;
+	border-radius: 10px;
+}
+
+.quiz-illustration {
+	width: 5rem;
+	height: 5rem;
+}

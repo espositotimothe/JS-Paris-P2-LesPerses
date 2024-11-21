@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
+import QuizMain from "./QuizMain";
 
 type Question = {
 	_id: string;
@@ -21,6 +22,7 @@ function Questions({
 
 	return (
 		<>
+			<QuizMain />
 			<div>
 				{currentQuestion ? (
 					<div key={currentQuestion._id}>

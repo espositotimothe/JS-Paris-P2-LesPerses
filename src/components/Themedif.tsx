@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 import Questions from "./quiz-components/Questions";
+import QuizMain from "./quiz-components/QuizMain";
 
 export interface Question {
 	_id: string;

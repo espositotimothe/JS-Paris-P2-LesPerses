@@ -8,7 +8,7 @@ type NextButtonProps = {
 };
 
 function NextButton({ data, setCurrentIndex }: NextButtonProps) {
-	const handleQuestionsClick = () => {
+	const NextQuestion = () => {
 		if (data) {
 			setCurrentIndex((prevIndex) =>
 				prevIndex < data.length - 1 ? prevIndex + 1 : 0,
@@ -17,11 +17,7 @@ function NextButton({ data, setCurrentIndex }: NextButtonProps) {
 	};
 	return (
 		<div className="button-next-container">
-			<button
-				type="button"
-				className="button-next"
-				onClick={handleQuestionsClick}
-			>
+			<button type="button" className="button-next" onClick={NextQuestion}>
 				Suivant
 			</button>
 		</div>

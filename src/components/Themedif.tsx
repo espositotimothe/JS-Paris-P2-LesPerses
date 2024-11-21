@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
+import Questions from "./quiz-components/Questions";
 
 export interface Question {
+	_id: string;
 	question: string;
 	answer: string;
 	badAnswers: string[];
 	category: string;
-	difficulty: string;
+	difficulty: "facile" | "normal" | "difficile";
 	quiz: string;
 }
 
 const Themedif = ({
 	setData,
+	data,
 }: { setData: Dispatch<Question[] | null>; data: Question[] | null }) => {
 	const [category, setCategory] = useState<string | null>(null);
 	const [difficulty, setDifficulty] = useState<string | null>(null);
@@ -87,6 +90,7 @@ const Themedif = ({
 					<option value="difficile">Difficile</option>
 				</select>
 			</label>
+			<Questions data={data} setData={setData} />
 		</div>
 	);
 };

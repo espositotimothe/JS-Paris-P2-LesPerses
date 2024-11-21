@@ -1,9 +1,11 @@
 import "./Header.css";
 import { useState } from "react";
 import Themedif from "../Themedif";
+import type { Question } from "../Themedif";
 
 export default function Header() {
 	const [showFilters, setShowFilters] = useState(false);
+	const [data, setData] = useState<Question[] | null>(null);
 	const handleStartQuiz = () => {
 		setShowFilters(true);
 	};
@@ -39,7 +41,7 @@ export default function Header() {
 					</section>
 				</>
 			) : (
-				<Themedif />
+				<Themedif data={data} setData={setData} />
 			)}
 		</>
 	);

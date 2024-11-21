@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CheckAnswer from "./CheckAnswer";
 
 type Quiz = {
 	_id: string;
@@ -17,36 +18,45 @@ const shuffleArray = (array: string[]) => {
 	return array;
 };
 
-//badAnswers = API badAnswers
-// answer= la bonne réponse
 export default function Options({ answer, badAnswers }: Quiz) {
-	// const [quiz, setQuiz] = useState<Quiz | null>(null);
-	// console.log(badAnswers)
-
-	// badAnswers.unshift(answer);
-	// const answers = shuffleArray(badAnswers);
 	const answers = shuffleArray([answer, ...badAnswers]);
-	// console.log(answers)
-	//const [allAnswers, setAllAnswers] = useState<string[]>(answers);
-	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
-	const handleAnswerClick = (answer: string) => {
-		setSelectedAnswer(answer);
+	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+	const [isValidated, setIsValidated] = useState(false);
+
+	const handleAnswerClick = (selected: string) => {
+		if (!isValidated) setSelectedAnswer(selected);
+	};
+
+	const handleValidate = (isValid: boolean) => {
+		setIsValidated(true);
 	};
 
 	return (
-		<div className="options">
-			{answers.length > 0 &&
-				answers.map((answer) => (
-					<button
-						key={answer}
-						type="button"
-						className={`option ${selectedAnswer === answer ? "selected" : ""}`}
-						onClick={() => handleAnswerClick(answer)}
-					>
-						{answer}
-					</button>
-				))}
+		<div>
+			<div className="options">
+				{answers.length > 0 &&
+					answers.map((option) => (
+						<button
+							key={option}
+							type="button"
+							onClick={() => handleAnswerClick(option)}
+						>
+							{option}
+						</button>
+					))}
+				<CheckAnswer
+					selectedAnswer={selectedAnswer}
+					correctAnswer={answer}
+					onValidate={handleValidate}
+					isValidated={isValidated}
+				/>
+			</div>
+			{isValidated && (
+				<div className="validation-message">
+					{selectedAnswer === answer ? "Bonne réponse !" : "Mauvaise réponse !"}
+				</div>
+			)}
 		</div>
 	);
 }

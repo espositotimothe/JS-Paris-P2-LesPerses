@@ -1,5 +1,20 @@
 #root {
 	margin: 0 auto;
-	padding: 2rem;
 	text-align: center;
+	background-color: #c2def0;
+}
+
+.option {
+	display: inline-block;
+	padding: 10px 20px;
+	margin: 5px;
+	border: 1px solid #ccc;
+	background-color: #f9f9f9;
+	cursor: pointer;
+	transition: background-color 0.3s, border-color 0.3s;
+}
+
+.option.selected {
+	background-color: #3726cd;
+	color: #ffffff;
 }

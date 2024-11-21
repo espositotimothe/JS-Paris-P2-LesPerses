@@ -1,5 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckAnswer from "./CheckAnswer";
+import "./option.css";
+
+// Fonction pour mélanger les réponses de manière aléatoire
+function shuffleArray(array: string[]): string[] {
+	return array.sort(() => Math.random() - 0.5);
+}
 
 type Quiz = {
 	_id: string;
@@ -10,22 +16,21 @@ type Quiz = {
 	difficulty: "facile" | "normal" | "difficile";
 };
 
-const shuffleArray = (array: string[]) => {
-	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i], array[j]] = [array[j], array[i]];
-	}
-	return array;
-};
-
 export default function Options({ answer, badAnswers }: Quiz) {
-	const answers = shuffleArray([answer, ...badAnswers]);
-
+	const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
 	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 	const [isValidated, setIsValidated] = useState(false);
 
+	// Mélanger les réponses une seule fois lors du chargement de la question
+	useEffect(() => {
+		const allAnswers = [answer, ...badAnswers]; // Combine la bonne réponse et les mauvaises
+		setShuffledAnswers(shuffleArray(allAnswers)); // Mélanger les réponses
+	}, [answer, badAnswers]); // S'exécute uniquement lorsque `answer` ou `badAnswers` changent
+
 	const handleAnswerClick = (selected: string) => {
-		if (!isValidated) setSelectedAnswer(selected);
+		if (!isValidated) {
+			setSelectedAnswer(selected);
+		}
 	};
 
 	const handleValidate = (isValid: boolean) => {
@@ -35,28 +40,30 @@ export default function Options({ answer, badAnswers }: Quiz) {
 	return (
 		<div>
 			<div className="options">
-				{answers.length > 0 &&
-					answers.map((option) => (
-						<button
-							key={option}
-							type="button"
-							onClick={() => handleAnswerClick(option)}
-						>
-							{option}
-						</button>
-					))}
-				<CheckAnswer
-					selectedAnswer={selectedAnswer}
-					correctAnswer={answer}
-					onValidate={handleValidate}
-					isValidated={isValidated}
-				/>
+				{shuffledAnswers.map((ans) => (
+					<button
+						type="button"
+						key={ans}
+						onClick={() => handleAnswerClick(ans)}
+						className={`option ${selectedAnswer === ans ? "selected" : ""} ${
+							isValidated && ans === answer ? "correct" : ""
+						} ${
+							isValidated && selectedAnswer === ans && selectedAnswer !== answer
+								? "incorrect"
+								: ""
+						}`}
+						disabled={isValidated}
+					>
+						{ans}
+					</button>
+				))}
 			</div>
-			{isValidated && (
-				<div className="validation-message">
-					{selectedAnswer === answer ? "Bonne réponse !" : "Mauvaise réponse !"}
-				</div>
-			)}
+			<CheckAnswer
+				selectedAnswer={selectedAnswer}
+				correctAnswer={answer}
+				onValidate={handleValidate}
+				isValidated={isValidated}
+			/>
 		</div>
 	);
 }

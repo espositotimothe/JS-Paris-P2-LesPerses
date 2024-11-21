@@ -1,0 +1,37 @@
+.options {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: row;
+	padding: 10% 0;
+	gap: 3%;
+}
+
+button.option {
+	width: 40vw;
+	border-radius: 5%;
+	color: #3e337f;
+	font-size: 2rem;
+}
+
+button.option.selected {
+	background-color: #00ced1;
+	color: #3e337f;
+}
+
+button.option.correct {
+	background-color: #4fda30;
+	color: #42339d;
+}
+
+button.option.incorrect {
+	background-color: #f56565;
+	color: #42339d;
+}
+
+.validation-message {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}

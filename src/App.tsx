@@ -1,17 +1,15 @@
-import { useState } from "react";
-import type { Question } from "./components/Themedif";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar.tsx";
-import Themedif from "./components/Themedif";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/quiz-components/Footer";
+import Header from "./components/quiz-components/Header";
 
 function App() {
-	const [data, setData] = useState<Question[] | null>(null);
 	return (
-		<div>
+		<>
 			<NavBar />
-
-			<Themedif data={data} setData={setData} />
-		</div>
+			<Header />
+			<Footer />
+		</>
 	);
 }
 export default App;

@@ -4,6 +4,7 @@ import type { Dispatch } from "react";
 import "./Theme.css";
 
 import "./Difficulty.css";
+import Questions from "./quiz-components/Questions";
 
 export interface Question {
 	_id: string;
@@ -225,7 +226,7 @@ const Themedif = ({
 				</div>
 			)}
 
-			{/* Affiche des questions */}
+			{step === 3 && <Questions data={data} setData={setData} />}
 		</div>
 	);
 };

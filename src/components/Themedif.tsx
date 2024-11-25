@@ -225,7 +225,6 @@ const Themedif = ({
 					</div>
 				</div>
 			)}
-
 			{step === 3 && <Questions data={data} setData={setData} />}
 		</div>
 	);

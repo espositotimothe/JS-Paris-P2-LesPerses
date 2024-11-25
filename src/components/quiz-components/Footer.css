@@ -4,16 +4,22 @@
 	padding: .5rem;
 	color: var(--home-blanc);
 	display: flex;
-	justify-content: flex-end;
 	align-items: center;
 	font-family: var(--font-text-block);
 	font-size: 0.8rem;
+	margin-top: 10vh;
 }
 
 .footer-mentions {
 	width: 70%;
 	text-align: left;
 	color: var(--home-blanc);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-weight: bold;
+	font-family: inherit;
+	letter-spacing: 1px;
 }
 
 .mention-2 {

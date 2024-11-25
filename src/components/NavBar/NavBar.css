@@ -1,4 +1,3 @@
-/* Conteneur de la NavBar */
 .navbar {
 	display: flex;
 	justify-content: space-between;
@@ -9,7 +8,6 @@
 	position: relative;
 }
 
-/* Logo */
 .logo {
 	flex-grow: 1;
 	display: flex;
@@ -21,7 +19,6 @@
 	margin: 0 auto;
 }
 
-/* Menu Burger */
 .burger {
 	display: none;
 	flex-direction: column;
@@ -32,12 +29,11 @@
 }
 
 .bar {
-	width: 25px;
-	height: 4px;
+	width: 34px;
+	height: 5px;
 	background-color: white;
 }
 
-/* Menu */
 .menu {
 	display: flex;
 	flex-direction: row;
@@ -56,14 +52,11 @@
 	background-color: #c2def0;
 }
 
-/* Responsive : si la largeur est inférieure à 768px, ajuster l'affichage */
 @media screen and (max-width: 768px) {
-	/* Disposition de la NavBar sur petits écrans */
 	.navbar {
 		flex-direction: row;
 	}
 
-	/* Position du logo sur petits écrans */
 	.logo {
 		order: 1;
 		flex-grow: 1;
@@ -71,13 +64,11 @@
 		justify-content: center;
 	}
 
-	/* Visibilité du menu burger */
 	.burger {
 		display: flex;
 		order: 2;
 	}
 
-	/* Disposition du menu sur petits écrans */
 	.menu {
 		display: none;
 		flex-direction: column;
@@ -91,13 +82,11 @@
 		transition: width 0.3s ease;
 	}
 
-	/* État du menu ouvert */
 	.menu.open {
 		display: flex;
 		width: 30%;
 	}
 
-	/* Style des liens du menu */
 	.menu a {
 		padding: 8% 5%;
 		width: 100%;

@@ -26,13 +26,13 @@
 
 @media (max-width: 768px) {
 	.category-img-size {
-		width: 50px;
-		height: 50px;
+		width: 45px;
+		height: 41px;
 	}
 
 	.category-button {
 		width: 20vw;
-		height: 14vh;
+		height: 16vh;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
@@ -41,6 +41,7 @@
 		background-color: white;
 		border: 0;
 		box-shadow: .3rem .3rem .3rem grey;
+		margin-bottom: 20px;
 	}
 
 	.category-container {
@@ -48,7 +49,8 @@
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 20px;
+		gap: 10vw;
 		padding-top: 20px;
+		margin-top: 5vh;
 	}
 }

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Dispatch } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
 import "./Questions.css";
@@ -60,12 +59,12 @@ function Questions({
 				) : (
 					<p className="question-error">Aucune question trouvée.</p>
 				)}
-			</div>
 
-			<NextButton
-				isValidated={isValidated} // Le bouton Suivant est activé uniquement si la question a été validée
-				onClick={handleNextQuestion} // Fonction pour passer à la question suivante
-			/>
+				<NextButton
+					isValidated={isValidated} // Le bouton Suivant est activé uniquement si la question a été validée
+					onClick={handleNextQuestion} // Fonction pour passer à la question suivante
+				/>
+			</div>
 		</>
 	);
 }

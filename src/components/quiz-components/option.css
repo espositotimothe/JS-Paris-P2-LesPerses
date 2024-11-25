@@ -3,15 +3,16 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	flex-direction: row;
-	padding: 6% 0;
-	gap: 3%;
+	gap: 8%;
 }
 
 button.option {
-	width: 40vw;
-	border-radius: 5%;
+	width: 30vw;
+	border-radius: 20px;
 	color: #3e337f;
 	font-size: 2rem;
+	box-shadow: 0 .3rem .3rem grey;
+	margin: 3% 0;
 }
 
 button.option.selected {

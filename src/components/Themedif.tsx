@@ -84,7 +84,7 @@ const Themedif = ({
 						>
 							Art litterature
 							<img
-								src="src\images\Logo-littérature-sans-fond.png"
+								src="src/images/Logo-littérature-sans-fond.png"
 								alt="Art et litterature"
 								className="category-img-size"
 							/>
@@ -99,7 +99,7 @@ const Themedif = ({
 						>
 							Cinema
 							<img
-								src="src\images\Logo-cinéma-sans-fond.png"
+								src="src/images/Logo-cinéma-sans-fond.png"
 								alt="Cinema"
 								className="category-img-size"
 							/>
@@ -116,7 +116,7 @@ const Themedif = ({
 						>
 							Sport
 							<img
-								src="src\images\Logo-sport-ballon-sans-fond.png"
+								src="src/images/Logo-sport-ballon-sans-fond.png"
 								alt="Sport"
 								className="category-img-size"
 							/>
@@ -131,7 +131,7 @@ const Themedif = ({
 						>
 							Jeux videos
 							<img
-								src="src\images\logo-jeux_vidéos-sans-fond.png"
+								src="src/images/logo-jeux_vidéos-sans-fond.png"
 								alt="Jeux videos"
 								className="category-img-size"
 							/>
@@ -148,7 +148,7 @@ const Themedif = ({
 						>
 							Musique
 							<img
-								src="src\images\logo-musique-sans-fond.png"
+								src="src/images/logo-musique-sans-fond.png"
 								alt="Musique"
 								className="category-img-size"
 							/>
@@ -184,7 +184,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\1etoile-sans-fond.png" alt="facile" />
+							<img src="src/images/1etoile-sans-fond.png" alt="facile" />
 						</button>
 						<button
 							type="button"
@@ -193,7 +193,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\2etoiles-sans-fond.png" alt="normal" />
+							<img src="src/images/2etoiles-sans-fond.png" alt="normal" />
 						</button>
 						<button
 							type="button"
@@ -202,20 +202,19 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\3etoiles-sans-fond.png" alt="difficile" />
+							<img src="src/images/3etoiles-sans-fond.png" alt="difficile" />
 						</button>
 					</div>
 
 					<div className="back">
 						<button type="button" onClick={() => setStep(1)}>
-							<img src="src\images\Back-sans-fond.png" alt="facile" />
+							<img src="src/images/Back-sans-fond.png" alt="facile" />
 						</button>
 					</div>
 				</div>
 			)}
 
-			{/* Affiche des questions */}
-			{step === 3 && <Questions data={data} setData={setData} />}
+			{step === 3 && <Questions data={data} />}
 		</div>
 	);
 };

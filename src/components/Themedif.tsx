@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
-
+import Questions from "./quiz-components/Questions";
 import "./Theme.css";
-
 import "./Difficulty.css";
 
 export interface Question {
@@ -61,12 +60,13 @@ const Themedif = ({
 					setData(result.quizzes);
 				}
 			} catch (error) {
-				console.error(`Erreur : ${error}`);
+				console.error(`Erreur lors du fetch : ${error}`); // Log des erreurs
 			}
 		};
 
 		fetchData(); // Appeler fetchData dans useEffect
 	}, [category, difficulty, setData]); // Ajouter category et difficulty comme dépendances
+
 	return (
 		<div>
 			{/* Sélecteur pour la catégorie */}
@@ -76,11 +76,10 @@ const Themedif = ({
 					<section className="category-container">
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"art_litterature"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("art_litterature");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Art litterature
@@ -92,11 +91,10 @@ const Themedif = ({
 						</button>
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"tv_cinema"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("tv_cinema");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Cinema
@@ -110,11 +108,10 @@ const Themedif = ({
 					<section className="category-container">
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"sport"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("sport");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Sport
@@ -126,11 +123,10 @@ const Themedif = ({
 						</button>
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"jeux_videos"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("jeux_videos");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Jeux videos
@@ -144,11 +140,10 @@ const Themedif = ({
 					<section className="category-container">
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"musique"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("musique");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Musique
@@ -160,11 +155,10 @@ const Themedif = ({
 						</button>
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"culture_generale"}
-							onClick={() => setStep(2)}
+							onClick={() => {
+								setCategory("culture_generale");
+								setStep(2);
+							}}
 							className="category-button"
 						>
 							Culture generale
@@ -185,33 +179,28 @@ const Themedif = ({
 					<div className="choice">
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"facile"}
-							onClick={() => setStep(3)}
+							onClick={() => {
+								setDifficulty("facile");
+								setStep(3);
+							}}
 						>
 							<img src="src\images\1etoile-sans-fond.png" alt="facile" />
 						</button>
-
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"normal"}
-							onClick={() => setStep(3)}
+							onClick={() => {
+								setDifficulty("normal");
+								setStep(3);
+							}}
 						>
 							<img src="src\images\2etoiles-sans-fond.png" alt="normal" />
 						</button>
-
 						<button
 							type="button"
-							onSelect={(e) =>
-								setCategory((e.target as HTMLButtonElement).value || null)
-							}
-							value={"difficile"}
-							onClick={() => setStep(3)}
+							onClick={() => {
+								setDifficulty("difficile");
+								setStep(3);
+							}}
 						>
 							<img src="src\images\3etoiles-sans-fond.png" alt="difficile" />
 						</button>
@@ -226,6 +215,7 @@ const Themedif = ({
 			)}
 
 			{/* Affiche des questions */}
+			{step === 3 && <Questions data={data} setData={setData} />}
 		</div>
 	);
 };

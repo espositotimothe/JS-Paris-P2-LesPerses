@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
 import type { Dispatch } from "react";
 
+import "./Theme.css";
+
+import "./Difficulty.css";
+
 export interface Question {
+	_id: string;
 	question: string;
 	answer: string;
 	badAnswers: string[];
 	category: string;
-	difficulty: string;
+	difficulty: "facile" | "normal" | "difficile";
 	quiz: string;
 }
 
 const Themedif = ({
 	setData,
+	data,
 }: { setData: Dispatch<Question[] | null>; data: Question[] | null }) => {
 	const [category, setCategory] = useState<string | null>(null);
 	const [difficulty, setDifficulty] = useState<string | null>(null);
+	const [step, setStep] = useState(1);
 
 	useEffect(() => {
 		// Fonction pour construire l'URL filtrée avec les paramètres
@@ -62,31 +69,163 @@ const Themedif = ({
 	}, [category, difficulty, setData]); // Ajouter category et difficulty comme dépendances
 	return (
 		<div>
-			<h1>Quiz App</h1>
-
 			{/* Sélecteur pour la catégorie */}
-			<label>
-				Catégorie :
-				<select onChange={(e) => setCategory(e.target.value || null)}>
-					<option value="">Toutes</option>
-					<option value="art_litterature">Art et Littérature</option>
-					<option value="tv_cinema">Cinéma</option>
-					<option value="jeux_videos">Jeux Vidéos</option>
-					<option value="musique">Musique</option>
-					<option value="sport">Sport</option>
-				</select>
-			</label>
+			{step === 1 && (
+				<div>
+					<h1>Thématique</h1>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"art_litterature"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Art litterature
+							<img
+								src="src\images\Logo-littérature-sans-fond.png"
+								alt="Art et litterature"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"tv_cinema"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Cinema
+							<img
+								src="src\images\Logo-cinéma-sans-fond.png"
+								alt="Cinema"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"sport"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Sport
+							<img
+								src="src\images\Logo-sport-ballon-sans-fond.png"
+								alt="Sport"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"jeux_videos"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Jeux videos
+							<img
+								src="src\images\logo-jeux_vidéos-sans-fond.png"
+								alt="Jeux videos"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
+					<section className="category-container">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"musique"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Musique
+							<img
+								src="src\images\logo-musique-sans-fond.png"
+								alt="Musique"
+								className="category-img-size"
+							/>
+						</button>
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"culture_generale"}
+							onClick={() => setStep(2)}
+							className="category-button"
+						>
+							Culture generale
+							<img
+								src="src/images/logo-cultureG-sans-fond.png"
+								alt="Culture generale"
+								className="category-img-size"
+							/>
+						</button>
+					</section>
+				</div>
+			)}
 
 			{/* Sélecteur pour la difficulté */}
-			<label>
-				Difficulté :
-				<select onChange={(e) => setDifficulty(e.target.value || null)}>
-					<option value="">Toutes</option>
-					<option value="facile">Facile</option>
-					<option value="normal">Normal</option>
-					<option value="difficile">Difficile</option>
-				</select>
-			</label>
+			{step === 2 && (
+				<div className="difficulty">
+					<h1>Difficulté</h1>
+					<div className="choice">
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"facile"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\1etoile-sans-fond.png" alt="facile" />
+						</button>
+
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"normal"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\2etoiles-sans-fond.png" alt="normal" />
+						</button>
+
+						<button
+							type="button"
+							onSelect={(e) =>
+								setCategory((e.target as HTMLButtonElement).value || null)
+							}
+							value={"difficile"}
+							onClick={() => setStep(3)}
+						>
+							<img src="src\images\3etoiles-sans-fond.png" alt="difficile" />
+						</button>
+					</div>
+
+					<div className="back">
+						<button type="button" onClick={() => setStep(1)}>
+							<img src="src\images\Back-sans-fond.png" alt="facile" />
+						</button>
+					</div>
+				</div>
+			)}
+
+			{/* Affiche des questions */}
 		</div>
 	);
 };

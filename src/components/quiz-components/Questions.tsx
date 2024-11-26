@@ -21,7 +21,7 @@ function Questions({
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const currentQuestion = data ? data[currentIndex] : null;
 	// const isQuizFinished = currentIndex >= data.length - 1;
-	const isQuizFinished = currentIndex > 3;
+	const isQuizFinished = currentIndex > 4;
 
 	const restartQuiz = () => {
 		setCurrentIndex(0);
@@ -32,7 +32,7 @@ function Questions({
 			<div className="question-container">
 				{isQuizFinished ? (
 					<div className="end-quiz">
-						<EndQuiz onRestart={restartQuiz} />
+						<EndQuiz restartQuiz={restartQuiz} />
 					</div>
 				) : currentQuestion ? (
 					<>

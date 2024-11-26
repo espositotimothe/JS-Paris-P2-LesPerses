@@ -1,7 +1,7 @@
 import "./EndQuiz.css";
 import Header from "./Header";
 
-function EndQuiz(onRestart: () => void) {
+function EndQuiz({ restartQuiz }: { restartQuiz: () => void }) {
 	return (
 		<section className="completion">
 			<h2 className="completion-title">Quiz terminé !</h2>
@@ -11,7 +11,7 @@ function EndQuiz(onRestart: () => void) {
 				src="src/images/podium-sans-fond.png"
 				alt="podium"
 			/>
-			<button type="button" className="restart-button" onClick={onRestart}>
+			<button type="button" className="restart-button" onClick={restartQuiz}>
 				recommence le quiz
 			</button>
 		</section>

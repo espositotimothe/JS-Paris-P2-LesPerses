@@ -72,102 +72,104 @@ const Themedif = ({
 			{/* Sélecteur pour la catégorie */}
 			{step === 1 && (
 				<div>
-					<h1>Thématique</h1>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("art_litterature");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Art litterature
-							<img
-								src="src/images/Logo-littérature-sans-fond.png"
-								alt="Art et litterature"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("tv_cinema");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Cinema
-							<img
-								src="src/images/Logo-cinéma-sans-fond.png"
-								alt="Cinema"
-								className="category-img-size"
-							/>
-						</button>
-					</section>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("sport");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Sport
-							<img
-								src="src/images/Logo-sport-ballon-sans-fond.png"
-								alt="Sport"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("jeux_videos");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Jeux videos
-							<img
-								src="src/images/logo-jeux_vidéos-sans-fond.png"
-								alt="Jeux videos"
-								className="category-img-size"
-							/>
-						</button>
-					</section>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("musique");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Musique
-							<img
-								src="src/images/logo-musique-sans-fond.png"
-								alt="Musique"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("culture_generale");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Culture generale
-							<img
-								src="src/images/logo-cultureG-sans-fond.png"
-								alt="Culture generale"
-								className="category-img-size"
-							/>
-						</button>
+					<h1 className="thematique">THÉMATIQUES</h1>
+					<section className="container">
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("art_litterature");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Art litterature
+								<img
+									src="src/images/Logo-littérature-sans-fond.png"
+									alt="Art et litterature"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("tv_cinema");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Cinema
+								<img
+									src="src/images/Logo-cinéma-sans-fond.png"
+									alt="Cinema"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("sport");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Sport
+								<img
+									src="src/images/Logo-sport-ballon-sans-fond.png"
+									alt="Sport"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("jeux_videos");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Jeux videos
+								<img
+									src="src/images/logo-jeux_vidéos-sans-fond.png"
+									alt="Jeux videos"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("musique");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Musique
+								<img
+									src="src/images/logo-musique-sans-fond.png"
+									alt="Musique"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("culture_generale");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Culture generale
+								<img
+									src="src/images/logo-cultureG-sans-fond.png"
+									alt="Culture generale"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
 					</section>
 				</div>
 			)}
@@ -175,7 +177,7 @@ const Themedif = ({
 			{/* Sélecteur pour la difficulté */}
 			{step === 2 && (
 				<div className="difficulty">
-					<h1>Difficulté</h1>
+					<h1 className="difficulte">DIFFICULTÉ</h1>
 					<div className="choice">
 						<button
 							type="button"

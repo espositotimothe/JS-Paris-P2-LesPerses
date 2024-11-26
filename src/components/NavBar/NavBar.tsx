@@ -34,10 +34,10 @@ const NavBar = () => {
 
 				{}
 				<div className={`menu ${isOpen ? "open" : ""}`}>
-					<button type="button" onClick={handleClick}>
+					<button className="burger-button" type="button" onClick={handleClick}>
 						Million
 					</button>
-					<button type="button" href="#aleatoire">
+					<button className="burger-button" type="button" href="#aleatoire">
 						Aléatoire
 					</button>
 				</div>

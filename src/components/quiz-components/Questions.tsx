@@ -50,7 +50,11 @@ function Questions({
 	return (
 		<>
 			<div className="question-container">
-				{currentQuestion ? (
+				{isQuizFinished ? (
+					<div className="end-quiz">
+						<EndQuiz restartQuiz={restartQuiz} />
+					</div>
+				) : currentQuestion ? (
 					<div key={currentQuestion._id}>
 						<h2 className="question">{currentQuestion.question}</h2>
 						<Options

@@ -15,7 +15,7 @@ export default function Header() {
 			{!showFilters ? (
 				<>
 					<section className="welcome">
-						<h1 className="welcome-title"> QUI VEUT DEBUGGER DES MILLIONS</h1>
+						<h1 className="welcome-title"> QUI VEUT DÉBUGGER DES MILLIONS</h1>
 					</section>
 
 					<section className="quiz-block">
@@ -28,7 +28,7 @@ export default function Header() {
 							plongez dans l’aventure, apprenez, et relevez les défis pour
 							tenter d'atteindre le score parfait.
 						</p>
-						<p className="quiz-description">
+						<p className="quiz-description-2">
 							Prêt à tester vos limites ? Que le jeu commence !
 						</p>
 						<button

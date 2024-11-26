@@ -1,19 +1,11 @@
 import "./QuizMain.css";
+import setCategory from ".././Themedif";
 
 function QuizMain() {
 	return (
 		<>
 			<section className="quiz">
-				<div className="progress-info">
-					<button type="button" className="question-number">
-						Question 1/10
-					</button>
-					<img
-						src="src/images/Logo-cinéma-sans-fond.png"
-						alt="Logo-cinema"
-						className="quiz-illustration"
-					/>
-				</div>
+				<div className="progress-container">{/* <progress> </progress> */}</div>
 			</section>
 		</>
 	);

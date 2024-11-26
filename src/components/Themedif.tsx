@@ -72,102 +72,104 @@ const Themedif = ({
 			{/* Sélecteur pour la catégorie */}
 			{step === 1 && (
 				<div>
-					<h1>Thématique</h1>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("art_litterature");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Art litterature
-							<img
-								src="src\images\Logo-littérature-sans-fond.png"
-								alt="Art et litterature"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("tv_cinema");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Cinema
-							<img
-								src="src\images\Logo-cinéma-sans-fond.png"
-								alt="Cinema"
-								className="category-img-size"
-							/>
-						</button>
-					</section>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("sport");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Sport
-							<img
-								src="src\images\Logo-sport-ballon-sans-fond.png"
-								alt="Sport"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("jeux_videos");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Jeux videos
-							<img
-								src="src\images\logo-jeux_vidéos-sans-fond.png"
-								alt="Jeux videos"
-								className="category-img-size"
-							/>
-						</button>
-					</section>
-					<section className="category-container">
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("musique");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Musique
-							<img
-								src="src\images\logo-musique-sans-fond.png"
-								alt="Musique"
-								className="category-img-size"
-							/>
-						</button>
-						<button
-							type="button"
-							onClick={() => {
-								setCategory("culture_generale");
-								setStep(2);
-							}}
-							className="category-button"
-						>
-							Culture generale
-							<img
-								src="src/images/logo-cultureG-sans-fond.png"
-								alt="Culture generale"
-								className="category-img-size"
-							/>
-						</button>
+					<h1 className="thematique">THÉMATIQUES</h1>
+					<section className="container">
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("art_litterature");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Art litterature
+								<img
+									src="src/images/Logo-littérature-sans-fond.png"
+									alt="Art et litterature"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("tv_cinema");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Cinema
+								<img
+									src="src/images/Logo-cinéma-sans-fond.png"
+									alt="Cinema"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("sport");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Sport
+								<img
+									src="src/images/Logo-sport-ballon-sans-fond.png"
+									alt="Sport"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("jeux_videos");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Jeux videos
+								<img
+									src="src/images/logo-jeux_vidéos-sans-fond.png"
+									alt="Jeux videos"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
+						<section className="category-container">
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("musique");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Musique
+								<img
+									src="src/images/logo-musique-sans-fond.png"
+									alt="Musique"
+									className="category-img-size"
+								/>
+							</button>
+							<button
+								type="button"
+								onClick={() => {
+									setCategory("culture_generale");
+									setStep(2);
+								}}
+								className="category-button"
+							>
+								Culture generale
+								<img
+									src="src/images/logo-cultureG-sans-fond.png"
+									alt="Culture generale"
+									className="category-img-size"
+								/>
+							</button>
+						</section>
 					</section>
 				</div>
 			)}
@@ -175,7 +177,7 @@ const Themedif = ({
 			{/* Sélecteur pour la difficulté */}
 			{step === 2 && (
 				<div className="difficulty">
-					<h1>Difficulté</h1>
+					<h1 className="difficulte">DIFFICULTÉ</h1>
 					<div className="choice">
 						<button
 							type="button"
@@ -184,7 +186,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\1etoile-sans-fond.png" alt="facile" />
+							<img src="src/images/1etoile-sans-fond.png" alt="facile" />
 						</button>
 						<button
 							type="button"
@@ -193,7 +195,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\2etoiles-sans-fond.png" alt="normal" />
+							<img src="src/images/2etoiles-sans-fond.png" alt="normal" />
 						</button>
 						<button
 							type="button"
@@ -202,20 +204,19 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src\images\3etoiles-sans-fond.png" alt="difficile" />
+							<img src="src/images/3etoiles-sans-fond.png" alt="difficile" />
 						</button>
 					</div>
 
 					<div className="back">
 						<button type="button" onClick={() => setStep(1)}>
-							<img src="src\images\Back-sans-fond.png" alt="facile" />
+							<img src="src/images/Back-sans-fond.png" alt="facile" />
 						</button>
 					</div>
 				</div>
 			)}
 
-			{/* Affiche des questions */}
-			{step === 3 && <Questions data={data} setData={setData} />}
+			{step === 3 && <Questions data={data} />}
 		</div>
 	);
 };

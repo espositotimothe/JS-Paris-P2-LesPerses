@@ -1,3 +1,5 @@
+import "./CheckAnswer.css";
+
 interface ValidateProps {
 	selectedAnswer: string | null;
 	correctAnswer: string;
@@ -18,12 +20,12 @@ export default function CheckAnswer({
 	};
 
 	return (
-		<div>
+		<div className="validate-button">
 			<button
 				type="button"
-				className="validate-button"
+				className="validate-button-next"
 				onClick={handleValidation}
-				disabled={isValidated}
+				disabled={isValidated} // Le bouton est désactivé après la validation
 			>
 				Valider
 			</button>

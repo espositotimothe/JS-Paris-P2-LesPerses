@@ -16,25 +16,41 @@ type Quiz = {
 	difficulty: "facile" | "normal" | "difficile";
 };
 
-export default function Options({ answer, badAnswers }: Quiz) {
-	const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
-	const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-	const [isValidated, setIsValidated] = useState(false);
+type OptionsProps = {
+	answer: string;
+	badAnswers: string[];
+	selectedAnswer: string | null;
+	setSelectedAnswer: React.Dispatch<React.SetStateAction<string | null>>;
+	onValidate: (isValid: boolean) => void;
+	isValidated: boolean;
+};
 
-	// Mélanger les réponses une seule fois lors du chargement de la question
+export default function Options({
+	answer,
+	badAnswers,
+	selectedAnswer,
+	setSelectedAnswer,
+	onValidate,
+	isValidated,
+}: OptionsProps) {
+	const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
+
 	useEffect(() => {
 		const allAnswers = [answer, ...badAnswers]; // Combine la bonne réponse et les mauvaises
 		setShuffledAnswers(shuffleArray(allAnswers)); // Mélanger les réponses
-	}, [answer, badAnswers]); // S'exécute uniquement lorsque `answer` ou `badAnswers` changent
+	}, [answer, badAnswers]);
 
 	const handleAnswerClick = (selected: string) => {
 		if (!isValidated) {
-			setSelectedAnswer(selected);
+			setSelectedAnswer(selected); // Mettre à jour la réponse sélectionnée
 		}
 	};
 
-	const handleValidate = (isValid: boolean) => {
-		setIsValidated(true);
+	const handleValidate = () => {
+		if (selectedAnswer) {
+			const isValid = selectedAnswer === answer; // Vérifier si la réponse est correcte
+			onValidate(isValid); // Passer l'état à parent via onValidate
+		}
 	};
 
 	return (
@@ -52,7 +68,7 @@ export default function Options({ answer, badAnswers }: Quiz) {
 								? "incorrect"
 								: ""
 						}`}
-						disabled={isValidated}
+						disabled={isValidated} // Désactiver les réponses après validation
 					>
 						{ans}
 					</button>

@@ -181,42 +181,63 @@ const Themedif = ({
 					<div className="choice">
 						<button
 							type="button"
+							className="choice-btn"
 							onClick={() => {
 								setDifficulty("facile");
 								setStep(3);
 							}}
 						>
-							<img src="src/images/1etoile-sans-fond.png" alt="facile" />
+							<img src="src/images/facile.png" alt="facile" />
 						</button>
 						<button
 							type="button"
+							className="choice-btn"
 							onClick={() => {
 								setDifficulty("normal");
 								setStep(3);
 							}}
 						>
-							<img src="src/images/2etoiles-sans-fond.png" alt="normal" />
+							<img src="src/images/moyen.png" alt="normal" />
 						</button>
 						<button
 							type="button"
+							className="choice-btn"
 							onClick={() => {
 								setDifficulty("difficile");
 								setStep(3);
 							}}
 						>
-							<img src="src/images/3etoiles-sans-fond.png" alt="difficile" />
+							<img src="src/images/difficile.png" alt="difficile" />
 						</button>
 					</div>
 
 					<div className="back">
-						<button type="button" onClick={() => setStep(1)}>
+						<button
+							type="button"
+							onClick={() => setStep(1)}
+							className="back-image"
+						>
 							<img src="src/images/Back-sans-fond.png" alt="facile" />
 						</button>
 					</div>
 				</div>
 			)}
 
-			{step === 3 && <Questions data={data} />}
+			{step === 3 && (
+				<>
+					<Questions data={data} />
+
+					<div className="back">
+						<button
+							type="button"
+							onClick={() => setStep(2)}
+							className="back-image"
+						>
+							<img src="src/images/Back-sans-fond.png" alt="cool-man" />
+						</button>
+					</div>
+				</>
+			)}
 		</div>
 	);
 };

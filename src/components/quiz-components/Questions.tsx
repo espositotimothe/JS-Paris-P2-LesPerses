@@ -3,7 +3,6 @@ import NextButton from "./NextButton";
 import Options from "./Options";
 import "./Questions.css";
 import EndQuiz from "./EndQuiz";
-import QuizMain from "./QuizMain";
 
 type Question = {
 	_id: string;
@@ -25,7 +24,7 @@ function Questions({
 
 	const currentQuestion = data ? data[currentIndex] : null;
 	// const isQuizFinished = currentIndex >= data.length - 1;
-	const isQuizFinished = currentIndex > 4;
+	const isQuizFinished = currentIndex > 3;
 
 	const restartQuiz = () => {
 		setCurrentIndex(0);
@@ -64,23 +63,14 @@ function Questions({
 							onValidate={handleValidation}
 							isValidated={isValidated}
 						/>
+						<NextButton
+							isValidated={isValidated} // Le bouton Suivant est activé uniquement si la question a été validée
+							onClick={handleNextQuestion} // Fonction pour passer à la question suivante
+						/>
 					</div>
-				) : currentQuestion ? (
-					<>
-						<QuizMain />
-						<div key={currentQuestion._id}>
-							<h2 className="question">{currentQuestion.question}</h2>
-							<Options {...currentQuestion} />
-						</div>
-					</>
 				) : (
 					<p className="question-error">Aucune question trouvée.</p>
 				)}
-
-				<NextButton
-					isValidated={isValidated} // Le bouton Suivant est activé uniquement si la question a été validée
-					onClick={handleNextQuestion} // Fonction pour passer à la question suivante
-				/>
 			</div>
 		</>
 	);

@@ -8,11 +8,13 @@
 
 button.option {
 	width: 30vw;
+	height: 20vh;
 	border-radius: 20px;
 	color: #3e337f;
-	font-size: 2rem;
 	box-shadow: 0 .3rem .3rem grey;
 	margin: 3% 0;
+	font-size: 140%;
+	font-weight: 800;
 }
 
 button.option.selected {

@@ -16,7 +16,7 @@
 
 .navbar img {
 	height: 13vh;
-	margin: 0 auto;
+	margin-left: 40%;
 }
 
 .burger {
@@ -32,6 +32,8 @@
 	border: none;
 	color: var(--home-violet);
 	background-color: #d4e6f1;
+	font-size: 1.5rem;
+	margin-left: 10px;
 }
 
 .bar {

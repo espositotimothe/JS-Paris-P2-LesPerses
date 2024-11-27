@@ -1,0 +1,11 @@
+.construction-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 4rem;
+	background-color: var(--home-partie);
+	position: relative;
+	height: fit-content;
+	min-height: 100%;
+}

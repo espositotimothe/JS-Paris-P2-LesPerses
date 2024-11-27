@@ -2,6 +2,7 @@ import { useState } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
 import "./Questions.css";
+import EndQuiz from "./EndQuiz";
 import QuizMain from "./QuizMain";
 
 type Question = {
@@ -11,7 +12,6 @@ type Question = {
 	badAnswers: string[];
 	category: string;
 	difficulty: "facile" | "normal" | "difficile";
-	quiz: string;
 };
 
 function Questions({
@@ -24,6 +24,12 @@ function Questions({
 	const [isValidated, setIsValidated] = useState(false); // Validation de la réponse
 
 	const currentQuestion = data ? data[currentIndex] : null;
+	// const isQuizFinished = currentIndex >= data.length - 1;
+	const isQuizFinished = currentIndex > 4;
+
+	const restartQuiz = () => {
+		setCurrentIndex(0);
+	};
 
 	// Fonction de validation de la réponse
 	const handleValidation = (isValid: boolean) => {
@@ -43,9 +49,12 @@ function Questions({
 
 	return (
 		<>
-			<QuizMain />
 			<div className="question-container">
-				{currentQuestion ? (
+				{isQuizFinished ? (
+					<div className="end-quiz">
+						<EndQuiz restartQuiz={restartQuiz} />
+					</div>
+				) : currentQuestion ? (
 					<div key={currentQuestion._id}>
 						<h2 className="question">{currentQuestion.question}</h2>
 						<Options
@@ -56,6 +65,14 @@ function Questions({
 							isValidated={isValidated}
 						/>
 					</div>
+				) : currentQuestion ? (
+					<>
+						<QuizMain />
+						<div key={currentQuestion._id}>
+							<h2 className="question">{currentQuestion.question}</h2>
+							<Options {...currentQuestion} />
+						</div>
+					</>
 				) : (
 					<p className="question-error">Aucune question trouvée.</p>
 				)}

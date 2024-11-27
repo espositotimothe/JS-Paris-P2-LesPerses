@@ -28,8 +28,13 @@
 	cursor: pointer;
 }
 
-.bar {
+.burger-button {
+	border: none;
+	color: var(--home-violet);
+	background-color: #d4e6f1;
+}
 
+.bar {
 	width: 34px;
 	height: 5px;
 	background-color: white;

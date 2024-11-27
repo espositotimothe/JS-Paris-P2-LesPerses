@@ -6,6 +6,7 @@
 	font-family: var(--font-titles);
 	margin-bottom: 3rem;
 	background-color: #c2def0;
+	margin-top: 20px;
 }
 
 .quiz-block {

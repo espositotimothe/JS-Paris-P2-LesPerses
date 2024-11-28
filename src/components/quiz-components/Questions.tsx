@@ -2,16 +2,8 @@ import { useState } from "react";
 import NextButton from "./NextButton";
 import Options from "./Options";
 import "./Questions.css";
+import type { Question } from "../Themedif";
 import EndQuiz from "./EndQuiz";
-
-type Question = {
-	_id: string;
-	question: string;
-	answer: string;
-	badAnswers: string[];
-	category: string;
-	difficulty: "facile" | "normal" | "difficile";
-};
 
 function Questions({
 	data,
@@ -31,7 +23,7 @@ function Questions({
 	};
 
 	// Fonction de validation de la réponse
-	const handleValidation = (isValid: boolean) => {
+	const handleValidation = () => {
 		setIsValidated(true);
 	};
 

@@ -3,6 +3,16 @@ import type { Dispatch } from "react";
 import Questions from "./quiz-components/Questions";
 import "./Theme.css";
 import "./Difficulty.css";
+import retour from "../images/Back-sans-fond.png";
+import cinema from "../images/Logo-cinéma-sans-fond.png";
+import artetlitterature from "../images/Logo-littérature-sans-fond.png";
+import sport from "../images/Logo-sport-ballon-sans-fond.png";
+import difficile from "../images/difficile.png";
+import facile from "../images/facile.png";
+import culturegenerale from "../images/logo-cultureG-sans-fond.png";
+import jeuxvideos from "../images/logo-jeux_vidéos-sans-fond.png";
+import musique from "../images/logo-musique-sans-fond.png";
+import moyen from "../images/moyen.png";
 
 export interface Question {
 	_id: string;
@@ -85,7 +95,7 @@ const Themedif = ({
 							>
 								Art litterature
 								<img
-									src="src/images/Logo-littérature-sans-fond.png"
+									src={artetlitterature}
 									alt="Art et litterature"
 									className="category-img-size"
 								/>
@@ -99,11 +109,7 @@ const Themedif = ({
 								className="category-button"
 							>
 								Cinema
-								<img
-									src="src/images/Logo-cinéma-sans-fond.png"
-									alt="Cinema"
-									className="category-img-size"
-								/>
+								<img src={cinema} alt="Cinema" className="category-img-size" />
 							</button>
 						</section>
 						<section className="category-container">
@@ -116,11 +122,7 @@ const Themedif = ({
 								className="category-button"
 							>
 								Sport
-								<img
-									src="src/images/Logo-sport-ballon-sans-fond.png"
-									alt="Sport"
-									className="category-img-size"
-								/>
+								<img src={sport} alt="Sport" className="category-img-size" />
 							</button>
 							<button
 								type="button"
@@ -132,7 +134,7 @@ const Themedif = ({
 							>
 								Jeux videos
 								<img
-									src="src/images/logo-jeux_vidéos-sans-fond.png"
+									src={jeuxvideos}
 									alt="Jeux videos"
 									className="category-img-size"
 								/>
@@ -149,7 +151,7 @@ const Themedif = ({
 							>
 								Musique
 								<img
-									src="src/images/logo-musique-sans-fond.png"
+									src={musique}
 									alt="Musique"
 									className="category-img-size"
 								/>
@@ -164,7 +166,7 @@ const Themedif = ({
 							>
 								Culture generale
 								<img
-									src="src/images/logo-cultureG-sans-fond.png"
+									src={culturegenerale}
 									alt="Culture generale"
 									className="category-img-size"
 								/>
@@ -187,7 +189,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src/images/facile.png" alt="facile" />
+							<img src={facile} alt="facile" />
 						</button>
 						<button
 							type="button"
@@ -197,7 +199,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src/images/moyen.png" alt="normal" />
+							<img src={moyen} alt="normal" />
 						</button>
 						<button
 							type="button"
@@ -207,7 +209,7 @@ const Themedif = ({
 								setStep(3);
 							}}
 						>
-							<img src="src/images/difficile.png" alt="difficile" />
+							<img src={difficile} alt="difficile" />
 						</button>
 					</div>
 
@@ -217,7 +219,7 @@ const Themedif = ({
 							onClick={() => setStep(1)}
 							className="back-image"
 						>
-							<img src="src/images/Back-sans-fond.png" alt="facile" />
+							<img src={retour} alt="facile" />
 						</button>
 					</div>
 				</div>

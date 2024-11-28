@@ -7,15 +7,6 @@ function shuffleArray(array: string[]): string[] {
 	return array.sort(() => Math.random() - 0.5);
 }
 
-type Quiz = {
-	_id: string;
-	question: string;
-	answer: string;
-	badAnswers: string[];
-	category: string;
-	difficulty: "facile" | "normal" | "difficile";
-};
-
 type OptionsProps = {
 	answer: string;
 	badAnswers: string[];

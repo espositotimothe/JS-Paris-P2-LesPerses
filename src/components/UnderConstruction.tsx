@@ -1,11 +1,11 @@
 import "./UnderConstruction.css";
-
+import under from "../images/page-en-construction.png";
 export default function UnderConstruction() {
 	return (
 		<div className="construction-container">
 			<h1 className="construction-title">🚧 Oops ! 🚧</h1>
 			<img
-				src="src/images/page-en-construction.png"
+				src={under}
 				alt="page-en-construction"
 				className="construction-image"
 			/>

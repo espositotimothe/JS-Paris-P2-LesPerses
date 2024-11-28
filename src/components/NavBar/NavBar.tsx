@@ -1,5 +1,6 @@
 import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
+import logo from "../../images/Quizz-nuage-violet-sans-fond.png";
 
 const NavBar = () => {
 	const navigate = useNavigate();
@@ -7,7 +8,7 @@ const NavBar = () => {
 	return (
 		<>
 			<nav className="navbar">
-				<img src="src/images/Quizz-nuage-violet-sans-fond.png" alt="Logo" />
+				<img src={logo} alt="Logo" />
 
 				<div>
 					<button

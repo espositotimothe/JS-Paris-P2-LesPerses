@@ -1,6 +1,4 @@
 import "./QuizMain.css";
-import setCategory from ".././Themedif";
-
 function QuizMain() {
 	return (
 		<>

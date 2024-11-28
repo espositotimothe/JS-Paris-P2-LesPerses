@@ -1,14 +1,79 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	--font-questions: "Roboto Slab", serif;
+	--font-text-block: "Montserrat", sans-serif;
+	--font-buttons: "Poppins", sans-serif;
+	--font-answers: "Open Sans", sans-serif;
+	--font-titles: "Playfair Display", serif;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* --- Couleurs pour le thème Home --- */
+:root {
+	/* Couleur principale */
+	--home-fond-main: #c2def0;
+	--home-navbar: #d4e6f1;
+	--home-fond-cards: #ffffff;
+	--home-footer: #a0bbce;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	/* Couleur secondaire */
+	--home-fond-blocks: #ebf5fb;
+	--home-parties: #344b63;
+	--home-fond-question: #c2def0;
+	--home-etoiles: #f7f700;
+
+	/* Couleur d'accent */
+	--home-cta: #00ced1;
+	--home-vrai: #4fda30;
+	--home-faux: #f56565;
+
+	/* Couleur de police */
+	--home-violet: #3e337f;
+	--home-blanc: #ffffff;
+	--home-noir: #000000;
+}
+
+/* --- Couleurs pour le thème Aléatoire --- */
+:root {
+	/* Couleur principale */
+	--aleatoire-fond-main: #c2def0;
+	--aleatoire-navbar: #d4e6f1;
+	--aleatoire-footer: #344b63;
+
+	/* Couleur secondaire */
+	--aleatoire-fond-blocks: #ebf5fb;
+	--aleatoire-fond-question: #c2def0;
+
+	/* Couleur d'accent */
+	--aleatoire-cta: #00ced1;
+	--aleatoire-vrai: #4fda30;
+	--aleatoire-faux: #f56565;
+
+	/* Couleur de police */
+	--aleatoire-violet: #3e337f;
+	--aleatoire-blanc: #ffffff;
+	--aleatoire-noir: #000000;
+}
+
+/* --- Couleurs pour le thème Million --- */
+:root {
+	/* Couleur principale */
+	--million-fond-main: #2d3e46;
+	--million-navbar: #344b63;
+	--million-footer: #344b63;
+
+	/* Couleur secondaire */
+	--million-fond-block: #1abc9c;
+	--million-fond-question: #2d3e46;
+	--million-coeur: #f4b425;
+	--million-temps: #4fda30;
+	--million-fond-classement: #ffffff;
+
+	/* Couleur d'accent */
+	--million-accent: #ecc440;
+	--million-vrai: #4fda30;
+	--million-faux: #f56565;
+
+	/* Couleur de police */
+	--million-blanc: #ffffff;
+	--million-noir: #000000;
+	--million-or: #ecc440;
 }

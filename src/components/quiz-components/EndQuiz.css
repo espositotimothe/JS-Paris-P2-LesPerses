@@ -1,0 +1,39 @@
+.completion {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--home-fond-blocks);
+	font-family: var(--font-text-block);
+}
+
+.completion-title {
+	color: var(--home-violet);
+	font-family: var(--font-titles);
+	font-size: 3rem;
+	font-weight: 900;
+}
+
+.congrats {
+	color: var(--home-violet);
+	font-family: var(--font-titles);
+	font-size: 2rem;
+	font-weight: 900;
+	padding-bottom: 2rem;
+}
+.podium {
+	width: 8rem;
+	height: 8rem;
+}
+.restart-button {
+	border-radius: 10px;
+	background-color: var(--home-cta);
+	color: var(--home-violet);
+	font-family: var(--font-buttons);
+	border-style: none;
+	margin-bottom: 2rem;
+	padding: 1rem;
+	box-shadow: .3rem .3rem .3rem grey;
+	margin-top: 2rem;
+}

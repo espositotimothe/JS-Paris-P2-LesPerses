@@ -1,0 +1,32 @@
+.button-next-container {
+	display: flex;
+	justify-content: center;
+	background-color: var(--home-fond-blocks);
+	border-radius: 0 0 20px 20px;
+	font-size: 1.4rem;
+}
+
+.button-next {
+	border-radius: 10px;
+	background-color: var(--home-cta);
+	color: var(--home-violet);
+	font-family: var(--font-buttons);
+	border-style: none;
+	margin-bottom: 2rem;
+	padding: 1rem;
+	box-shadow: .3rem .3rem .3rem grey;
+	padding: 0rem 4.7rem;
+}
+
+.button-next.active {
+	background-color: #00ced1; /* Couleur active du bouton */
+	cursor: pointer;
+}
+
+.button-next.disabled {
+	background-color: lightgray; /* Couleur du bouton désactivé */
+}
+
+.button-next:disabled {
+	background-color: lightgray;
+}

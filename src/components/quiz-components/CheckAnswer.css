@@ -1,0 +1,24 @@
+.validate-button {
+	display: flex;
+	justify-content: center;
+	background-color: var(--home-fond-blocks);
+	border-radius: 0 0 20px 20px;
+	padding-top: 5%;
+	font-size: 1.4rem;
+}
+
+.validate-button-next {
+	border-radius: 10px;
+	background-color: var(--home-cta);
+	color: var(--home-violet);
+	font-family: var(--font-buttons);
+	border-style: none;
+	margin-bottom: 2rem;
+	padding: 1rem;
+	box-shadow: 0 .3rem .3rem grey;
+	padding: 0 5rem;
+}
+.validate-button-next:disabled {
+	background-color: lightgray;
+	cursor: not-allowed;
+}

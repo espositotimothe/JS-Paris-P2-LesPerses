@@ -235,7 +235,7 @@ const Themedif = ({
 							onClick={() => setStep(2)}
 							className="back-image"
 						>
-							<img src="src/images/Back-sans-fond.png" alt="cool-man" />
+							<img src={retour} alt="cool-man" />
 						</button>
 					</div>
 				</>
